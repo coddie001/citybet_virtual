@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Las Palmas",
+    "away_team": "Valladolid",
+    "teams": {
+      "Las Palmas": {
+        "shirt_color": "Yellow",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "D. Horka\u0161",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "Mika M\u00e1rmol",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "\u00c1lex Su\u00e1rez",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Herzog",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Viti Rozada",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Sandro",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Kirian",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "E. Loiodice",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Manu Fuster",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "J. Recoba",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Jes\u00e9",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      },
+      "Valladolid": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Guilherme Fernandes",
+            "strength": 20,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Guille Bueno",
+            "strength": 20,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Javi S\u00e1nchez",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Pablo Tomeo",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "M. Lachuer",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "J. Ponceau",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Meseguer",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "S. Juri\u0107",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "A. Ndiaye",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Latasa",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Marcos Andr\u00e9",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      }
+    }
+  }
+}

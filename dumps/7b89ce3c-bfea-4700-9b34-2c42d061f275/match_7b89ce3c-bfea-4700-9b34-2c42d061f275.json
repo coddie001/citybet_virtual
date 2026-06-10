@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "FC Augsburg",
+    "away_team": "Eintracht Frankfurt",
+    "teams": {
+      "FC Augsburg": {
+        "shirt_color": "White",
+        "short_color": "Green",
+        "players": [
+          {
+            "name": "F. Dahmen",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "D. Giannoulis",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "J. Gouweleeuw",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "C. Matsima",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. Wolf",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "A. Claude-Maurice",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "K. Jaki\u0107",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "E. Rexhbe\u00e7aj",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "A. Maier",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.15
+          },
+          {
+            "name": "P. Tietz",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "S. Essende",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      },
+      "Eintracht Frankfurt": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "M. Zetterer",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "A. Theate",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "R. Koch",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "R. Kristensen",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "N. Collins",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.24
+          },
+          {
+            "name": "A. Knauff",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "M. G\u00f6tze",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "E. Skhiri",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "R. Doan",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "J. Burkardt",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "M. Batshuayi",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

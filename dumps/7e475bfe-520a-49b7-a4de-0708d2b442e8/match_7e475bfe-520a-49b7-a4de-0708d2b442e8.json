@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Celta Vigo",
+    "away_team": "Villarreal",
+    "teams": {
+      "Celta Vigo": {
+        "shirt_color": "SkyBlue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Ionu\u021b Andrei Radu",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Marcos Alonso Mendoza",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Carl Anders Theodor Starfelt",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Joseph Aidoo",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "\u00d3scar Mingueza Garc\u00eda",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Iago Aspas Juncal",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Francisco Jos\u00e9 Beltr\u00e1n Peinado",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Moriba Kourouma Kourouma",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Bryan Zaragoza Mart\u00ednez",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Borja Iglesias Quintas",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.13
+          },
+          {
+            "name": "Ferran Jutgl\u00e0 Blanch",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      },
+      "Villarreal": {
+        "shirt_color": "Yellow",
+        "short_color": "Yellow",
+        "players": [
+          {
+            "name": "Diego Jos\u00e9 Conde Alcolado",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Sergi Cardona Berm\u00fadez",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Juan Marcos Foyth",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Logan Evans Costa",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Thomas Teye Partey",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Ayoze P\u00e9rez Guti\u00e9rrez",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Daniel Parejo Mu\u00f1oz",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.03
+          },
+          {
+            "name": "Pape Alassane Gueye",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Gerard Moreno Balaguer\u00f3",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Nicolas P\u00e9p\u00e9",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.25
+          },
+          {
+            "name": "Georges Mikautadze\u10d2\u10d8\u10dd\u10e0\u10d2\u10d8 \u10db\u10d8\u10e5\u10d0\u10e3\u10e2\u10d0\u10eb\u10d4",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      }
+    }
+  }
+}

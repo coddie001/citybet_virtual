@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Ipswich Town",
+    "away_team": "Nottingham Forest",
+    "teams": {
+      "Ipswich Town": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Alexander Palmer",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Leif Davis",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Dara Joseph O'Shea",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Jacob John Greaves",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Ashley Simon Young",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.09
+          },
+          {
+            "name": "Jaden Philogene-Bidace",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Azor Matusiwa",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "Jens-Lys Michel Cajuste",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Jack Raymond Clarke",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Chuba Amechi Akpom",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Samuel Joseph Szmodics",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      },
+      "Nottingham Forest": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Matz Willy Els Sels",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "Temitayo Olufisayo Olaoluwa Aina",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Murillo Santiago Costa dos Santos",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Nikola Milenkovi\u0107",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Neco Shay Williams",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Dan Assane Ndoye",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Morgan Anthony Gibbs-White",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Douglas Luiz Soares de Paulo",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Dilane Bakwa",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Christopher Grant Wood",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.09
+          },
+          {
+            "name": "Arnaud Kalimuendo Muinga",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Heidenheim",
+    "away_team": "RB Leipzig",
+    "teams": {
+      "Heidenheim": {
+        "shirt_color": "Red",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "K. M\u00fcller",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "L. Pa\u00e7arada",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "P. Mainka",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "T. Siersleben",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "O. Traor\u00e9",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "M. Honsak",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "N. Dorsch",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "J. Sch\u00f6ppner",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "A. Beck",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.13
+          },
+          {
+            "name": "M. Pieringer",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "B. Zivzivadze",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      },
+      "RB Leipzig": {
+        "shirt_color": "White",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "P. Gul\u00e1csi",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "D. Raum",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.24
+          },
+          {
+            "name": "W. Orban",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "C. Lukeba",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "B. Henrichs",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.18
+          },
+          {
+            "name": "T. Werner",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "X. Schlager",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "A. Haidara",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "J. Bakayoko",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "C. Baumgartner",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          },
+          {
+            "name": "R\u00f4mulo",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      }
+    }
+  }
+}

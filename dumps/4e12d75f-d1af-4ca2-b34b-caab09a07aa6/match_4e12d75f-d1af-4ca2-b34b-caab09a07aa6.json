@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "VfB Stuttgart",
+    "away_team": "VfL Bochum",
+    "teams": {
+      "VfB Stuttgart": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Alexander N\u00fcbel",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Maximilian Mittelst\u00e4dt",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Jeffrey Julian Gaston Chabot",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Dan-Axel Zagadou",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Lorenz Assignon",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Chris Jan F\u00fchrich",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Angelo Stiller",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Atakan Karazor",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Jamie Leweling",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Deniz Undav",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Ermedin Demirovi\u0107",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      },
+      "VfL Bochum": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Neuer",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Upamecano",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.03
+          },
+          {
+            "name": "Dias",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.03
+          },
+          {
+            "name": "Grimaldo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Araujo",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Anguissa",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 0.96
+          },
+          {
+            "name": "Mainoo",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 0.95
+          },
+          {
+            "name": "Szoboszlai",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 0.96
+          },
+          {
+            "name": "Casemiro",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 0.93
+          },
+          {
+            "name": "Diaz",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.29
+          },
+          {
+            "name": "Haaland",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      }
+    }
+  }
+}

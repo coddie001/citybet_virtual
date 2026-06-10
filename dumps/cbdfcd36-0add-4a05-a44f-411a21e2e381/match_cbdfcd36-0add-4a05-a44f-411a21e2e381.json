@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Valladolid",
+    "away_team": "Leganes",
+    "teams": {
+      "Valladolid": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Guilherme Sousa Carvalho Fernandes",
+            "strength": 20,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Guillermo Bueno L\u00f3pez",
+            "strength": 20,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Javier S\u00e1nchez de Felipe",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Pablo Tomeo F\u00e9lez",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Mathis Lachuer",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Julien Ponceau",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "V\u00edctor Andr\u00e9s Meseguer Cavas",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Stanko Juri\u0107",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Amath Ndiaye Diedhiou",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Juan Miguel Latasa Fern\u00e1ndez Layos",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Marcos Andr\u00e9 de Sousa Mendon\u00e7a",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      },
+      "Leganes": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Ramsdale",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Trippier",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 0.92
+          },
+          {
+            "name": "Romero",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.01
+          },
+          {
+            "name": "Dias",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Botman",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.1
+          },
+          {
+            "name": "Locatelli",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Calhanoglu",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.08
+          },
+          {
+            "name": "Casemiro",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Gallagher",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 0.91
+          },
+          {
+            "name": "Leao",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "Madueke",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.11
+          }
+        ]
+      }
+    }
+  }
+}

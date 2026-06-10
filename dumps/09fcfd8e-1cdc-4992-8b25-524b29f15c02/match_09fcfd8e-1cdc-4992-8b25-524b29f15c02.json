@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Manchester City",
+    "away_team": "Leicester City",
+    "teams": {
+      "Manchester City": {
+        "shirt_color": "SkyBlue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Gianluigi Donnarumma",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "Jo\u0161ko Gvardiol",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "R\u00faben dos Santos Gato Alves Dias",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Nathan Benjamin Ak\u00e9",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Rodrigo Hern\u00e1ndez Cascante",
+            "strength": 100,
+            "role": "RB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Philip Walter Foden",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Tijjani Martinus Jan Reijnders Lekatompessy",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Bernardo Mota Veiga de Carvalho e Silva",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "S\u00e1vio Moreira de Oliveira",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Erling Braut H\u00e5land",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.25
+          },
+          {
+            "name": "Omar Khaled Mohamed Marmoush",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.25
+          }
+        ]
+      },
+      "Leicester City": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Francisco Barbosa Vieites",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.02
+          },
+          {
+            "name": "Victor Bernth Kristiansen",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Jannik Vestergaard",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.0
+          },
+          {
+            "name": "Boubakary Soumar\u00e9",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Ricardo Domingos Barbosa Pereira",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Stephy Alvaro Mavididi",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Harry Billy Winks",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.08
+          },
+          {
+            "name": "Oliver William Skipp",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Issahaku Abdul Fatawu",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Jordan Pierre Ayew",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Juli\u00e1n Sim\u00f3n Carranza",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      }
+    }
+  }
+}

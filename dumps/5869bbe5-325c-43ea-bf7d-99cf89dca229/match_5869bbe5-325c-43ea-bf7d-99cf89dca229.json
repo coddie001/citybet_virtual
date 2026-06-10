@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "West Ham United",
+    "away_team": "Chelsea",
+    "teams": {
+      "West Ham United": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "A. Areola",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "K. Walker-Peters",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "J. Todibo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "M. Kilman",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "A. Wan-Bissaka",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Lucas Paquet\u00e1",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.16
+          },
+          {
+            "name": "T. Sou\u010dek",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.05
+          },
+          {
+            "name": "J. Ward-Prowse",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.04
+          },
+          {
+            "name": "J. Bowen",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "N. F\u00fcllkrug",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "C. Wilson",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      },
+      "Chelsea": {
+        "shirt_color": "Blue",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "Robert S\u00e1nchez",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "Marc Cucurella",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "L. Colwill",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "T. Chalobah",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "R. James",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Pedro Neto",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "M. Caicedo",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "E. Fern\u00e1ndez",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "C. Palmer",
+            "strength": 100,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Jo\u00e3o Pedro",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "L. Delap",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      }
+    }
+  }
+}

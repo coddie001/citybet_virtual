@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Nottingham Forest",
+    "away_team": "Arsenal",
+    "teams": {
+      "Nottingham Forest": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Matz Willy Els Sels",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "Temitayo Olufisayo Olaoluwa Aina",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Murillo Santiago Costa dos Santos",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Nikola Milenkovi\u0107",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Neco Shay Williams",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Dan Assane Ndoye",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Morgan Anthony Gibbs-White",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Douglas Luiz Soares de Paulo",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Dilane Bakwa",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Christopher Grant Wood",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.09
+          },
+          {
+            "name": "Arnaud Kalimuendo Muinga",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      },
+      "Arsenal": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "David Raya Mart\u00edn",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "Piero Mart\u00edn Hincapi\u00e9 Reyna",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Gabriel dos Santos Magalh\u00e3es",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "William Alain Andr\u00e9 Gabriel Saliba",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Benjamin William White",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Leandro Trossard",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Martin \u00d8degaard",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Declan Rice",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Bukayo Saka",
+            "strength": 100,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Viktor Einar Gy\u00f6keres",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.26
+          },
+          {
+            "name": "Eberechi Oluchi Eze",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

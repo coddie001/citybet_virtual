@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block html_title %}{{ i18n.t("workers_title") }} | {{ i18n.t("site_name") }}{% endblock %}
+
+{% block content %}
+<div class="fm-page fm-workers-page">
+    <section class="fm-panel">
+        <div class="fm-panel-head">
+            <h3>{{ i18n.t("workers_total_match_workers") }}</h3>
+            <span class="fm-panel-count">{{ ready }}/{{ total }} {{ i18n.t("workers_ready_label") }}</span>
+        </div>
+        <div class="fm-workers-summary-grid">
+            <div class="fm-workers-summary-tile">
+                <div class="fm-workers-summary-value">{{ total_threads }}</div>
+                <div class="fm-workers-summary-label">{{ i18n.t("workers_total_threads") }}</div>
+            </div>
+            <div class="fm-workers-summary-tile">
+                <div class="fm-workers-summary-value">{{ total_batches }}</div>
+                <div class="fm-workers-summary-label">{{ i18n.t("workers_batches_sent") }}</div>
+            </div>
+            <div class="fm-workers-summary-tile">
+                <div class="fm-workers-summary-value">{{ total_matches }}</div>
+                <div class="fm-workers-summary-label">{{ i18n.t("workers_matches_done") }}</div>
+            </div>
+            <div class="fm-workers-summary-tile fm-workers-summary-bad">
+                <div class="fm-workers-summary-value">{{ total_failures }}</div>
+                <div class="fm-workers-summary-label">{{ i18n.t("workers_failures") }}</div>
+            </div>
+        </div>
+    </section>
+
+    {% if no_remote_workers %}
+    <details class="fm-panel fm-workers-setup mt-3">
+        <summary class="fm-panel-head fm-workers-setup-head">
+            <h3>{{ i18n.t("workers_remote_setup_title") }}</h3>
+            <span class="fm-panel-count">
+                <span class="fm-workers-setup-hint">{{ i18n.t("workers_remote_setup_none") }}</span>
+                <span class="fm-workers-setup-chevron" aria-hidden="true">›</span>
+            </span>
+        </summary>
+        <div class="fm-workers-setup-body">
+            <p class="fm-workers-setup-lead">
+                {{ i18n.t("workers_remote_setup_lead_1") }} <code>open-football.conf</code> {{ i18n.t("workers_remote_setup_lead_1_suffix") }}
+            </p>
+            <pre>[[worker]]
+address = "127.0.0.1:18001"</pre>
+            <p class="fm-workers-setup-lead">
+                {{ i18n.t("workers_remote_setup_lead_2") }}
+                <code>open_football --worker --worker-port=18001</code>
+            </p>
+        </div>
+    </details>
+    {% endif %}
+
+    <section class="fm-panel mt-3">
+        <div class="fm-panel-head">
+            <h3>{{ i18n.t("workers_table_title") }}</h3>
+            <span class="fm-panel-count">{{ workers.len() }} {% if workers.len() == 1 %}{{ i18n.t("workers_host_singular") }}{% else %}{{ i18n.t("workers_host_plural") }}{% endif %}</span>
+        </div>
+        <div class="fm-workers-table-wrap">
+            <table class="fm-workers-table">
+                <thead>
+                    <tr>
+                        <th>{{ i18n.t("workers_th_status") }}</th>
+                        <th>{{ i18n.t("workers_th_host") }}</th>
+                        <th>{{ i18n.t("workers_th_address") }}</th>
+                        <th>{{ i18n.t("workers_th_version") }}</th>
+                        <th>{{ i18n.t("workers_th_cpu") }}</th>
+                        <th class="fm-num">{{ i18n.t("workers_th_threads") }}</th>
+                        <th class="fm-num">{{ i18n.t("workers_th_batches") }}</th>
+                        <th class="fm-num">{{ i18n.t("workers_th_matches") }}</th>
+                        <th class="fm-num">{{ i18n.t("workers_failures") }}</th>
+                        <th class="fm-num">{{ i18n.t("workers_th_last_ms") }}</th>
+                        <th class="fm-num">{{ i18n.t("workers_th_speed_mps") }}</th>
+                        <th>{{ i18n.t("workers_th_last_error") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for w in workers %}
+                    <tr class="fm-worker-row fm-worker-{{ w.status_label }}">
+                        <td>
+                            <span class="fm-worker-badge fm-worker-badge-{{ w.status_label }}">
+                                {% if w.status_label == "ready" %}{{ i18n.t("workers_status_ready") }}
+                                {% else if w.status_label == "local" %}{{ i18n.t("workers_status_local") }}
+                                {% else if w.status_label == "version_mismatch" %}{{ i18n.t("workers_status_version_mismatch") }}
+                                {% else if w.status_label == "unreachable" %}{{ i18n.t("workers_status_unreachable") }}
+                                {% else %}{{ i18n.t("workers_status_connecting") }}{% endif %}
+                            </span>
+                            {% if !w.status_detail.is_empty() %}
+                            <div class="fm-worker-status-detail">{{ w.status_detail }}</div>
+                            {% endif %}
+                        </td>
+                        <td class="fm-worker-host">
+                            {% if w.computer_name.is_empty() %}<span class="fm-muted">—</span>{% else %}{{ w.computer_name }}{% endif %}
+                        </td>
+                        <td class="fm-worker-addr">{{ w.address }}</td>
+                        <td>
+                            {% if w.version.is_empty() %}<span class="fm-muted">—</span>{% else %}v{{ w.version }}{% endif %}
+                        </td>
+                        <td class="fm-worker-cpu">
+                            {% if w.cpu_brand.is_empty() %}<span class="fm-muted">—</span>{% else %}{{ w.cpu_brand }}{% endif %}
+                        </td>
+                        <td class="fm-num">{{ w.threads }}</td>
+                        <td class="fm-num">{% if w.status_label == "local" %}<span class="fm-muted">—</span>{% else %}{{ w.batches_sent }}{% endif %}</td>
+                        <td class="fm-num">{% if w.status_label == "local" %}<span class="fm-muted">—</span>{% else %}{{ w.matches_completed }}{% endif %}</td>
+                        <td class="fm-num{% if w.failures > 0 %} fm-num-bad{% endif %}">{% if w.status_label == "local" %}<span class="fm-muted">—</span>{% else %}{{ w.failures }}{% endif %}</td>
+                        <td class="fm-num">{% if let Some(lat) = w.last_latency_ms %}{{ lat }}{% else %}<span class="fm-muted">—</span>{% endif %}</td>
+                        <td class="fm-num">{% if let Some(mps) = w.throughput_mps %}{{ mps }}{% else %}<span class="fm-muted">—</span>{% endif %}</td>
+                        <td class="fm-worker-error">
+                            {% if let Some(err) = w.last_error %}<span class="fm-num-bad">{{ err }}</span>{% else %}<span class="fm-muted">—</span>{% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+{% endblock %}

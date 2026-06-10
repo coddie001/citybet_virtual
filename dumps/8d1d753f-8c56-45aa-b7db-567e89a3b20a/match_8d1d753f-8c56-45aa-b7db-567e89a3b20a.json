@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Borussia M'gladbach",
+    "away_team": "VfB Stuttgart",
+    "teams": {
+      "Borussia M'gladbach": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Jonas Omlin",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Kevin Diks Bakarbessy",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Nico Elvedi",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Marvin Friedrich",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Joseph Michael Scally",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Robin Hack",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Rocco Reitz",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Kevin St\u00f6ger",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Franck Honorat",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Tim Kleindienst",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "Shuto Machino\u753a\u91ce \u4fee\u6597",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "VfB Stuttgart": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Alexander N\u00fcbel",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Maximilian Mittelst\u00e4dt",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Jeffrey Julian Gaston Chabot",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Dan-Axel Zagadou",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Lorenz Assignon",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Chris Jan F\u00fchrich",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Angelo Stiller",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Atakan Karazor",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Jamie Leweling",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Deniz Undav",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Ermedin Demirovi\u0107",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Valladolid",
+    "away_team": "Real Madrid",
+    "teams": {
+      "Valladolid": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Ramsdale",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Dias",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 0.92
+          },
+          {
+            "name": "Mendy",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Acerbi",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 0.95
+          },
+          {
+            "name": "Grimaldo Jr",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Caicedo",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 0.96
+          },
+          {
+            "name": "Frattesi",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Kimmich",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 0.98
+          },
+          {
+            "name": "Camavinga",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.07
+          },
+          {
+            "name": "Pulisic",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.28
+          },
+          {
+            "name": "Griezmann",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      },
+      "Real Madrid": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Thibaut Nicolas Marc Courtois",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Eduardo Celmi Camavinga",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Antonio R\u00fcdiger",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "\u00c9der Gabriel Milit\u00e3o",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Federico Santiago Valverde Dipetta",
+            "strength": 100,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Kylian Mbapp\u00e9 Lottin",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.29
+          },
+          {
+            "name": "Jude Victor William Bellingham",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Aur\u00e9lien Djani Tchouameni",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Rodrygo Silva de Goes",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Vinicius Jos\u00e9 Paix\u00e3o de Oliveira Junior",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.28
+          },
+          {
+            "name": "Endrick Felipe Moreira de Sousa",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      }
+    }
+  }
+}

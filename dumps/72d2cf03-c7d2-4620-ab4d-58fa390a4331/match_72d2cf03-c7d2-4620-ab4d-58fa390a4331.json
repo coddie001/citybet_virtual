@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Arsenal",
+    "away_team": "Ipswich Town",
+    "teams": {
+      "Arsenal": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "David Raya Mart\u00edn",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "Piero Mart\u00edn Hincapi\u00e9 Reyna",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Gabriel dos Santos Magalh\u00e3es",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "William Alain Andr\u00e9 Gabriel Saliba",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Benjamin William White",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Leandro Trossard",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Martin \u00d8degaard",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Declan Rice",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Bukayo Saka",
+            "strength": 100,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Viktor Einar Gy\u00f6keres",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.26
+          },
+          {
+            "name": "Eberechi Oluchi Eze",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      },
+      "Ipswich Town": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Martinez",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 0.93
+          },
+          {
+            "name": "Cubarsi",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 0.92
+          },
+          {
+            "name": "Upamecano",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.05
+          },
+          {
+            "name": "Konate",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Walker",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.0
+          },
+          {
+            "name": "Musiala Jr",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Fernandes",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 0.96
+          },
+          {
+            "name": "Pedri",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 0.92
+          },
+          {
+            "name": "Locatelli",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 0.93
+          },
+          {
+            "name": "Salah",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.27
+          },
+          {
+            "name": "Thuram",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.28
+          }
+        ]
+      }
+    }
+  }
+}

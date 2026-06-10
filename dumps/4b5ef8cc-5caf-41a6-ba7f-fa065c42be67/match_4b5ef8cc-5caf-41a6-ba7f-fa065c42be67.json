@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Werder Bremen",
+    "away_team": "Heidenheim",
+    "teams": {
+      "Werder Bremen": {
+        "shirt_color": "Green",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Karl Jakob Hein",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "Felix Agu",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.26
+          },
+          {
+            "name": "Marco Friedl",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Maximilian W\u00f6ber",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Mitchell-Elijah Weiser",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Marco Gr\u00fcll",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Cameron Mitchel Puertas Castro",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Jens Dalsgaard Stage",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Romano Christian Schmid",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Victor Okoh Boniface",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "Justin Gideon Njinmah",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.25
+          }
+        ]
+      },
+      "Heidenheim": {
+        "shirt_color": "Red",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "Kevin M\u00fcller",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Leart Shukri Paqarada",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Patrick Mainka",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Tim Siersleben",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Omar Haktab Traor\u00e8",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Mathias Honsak",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Niklas Bernd Dorsch",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Jan Sch\u00f6ppner",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Adrian Beck",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Marvin Pieringer",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Budu Zivzivadze\u10d1\u10e3\u10d3\u10e3 \u10d6\u10d8\u10d5\u10d6\u10d8\u10d5\u10d0\u10eb\u10d4",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Roma",
+    "away_team": "Lecce",
+    "teams": {
+      "Roma": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Mile Svilar\u041c\u0438\u043b\u0435 \u0421\u0432\u0438\u043b\u0430\u0440",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jos\u00e9 \u00c1ngel Esmoris Tasende",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Gianluca Mancini",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Obite Evan Ndicka",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Wesley Vin\u00edcius Fran\u00e7a Lima",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Paulo Bruno Exequiel Dybala",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Lorenzo Pellegrini",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Bryan Cristante",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.09
+          },
+          {
+            "name": "Leon Patrick Bailey Butler",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Artem Dovbyk\u0414\u043e\u0432\u0431\u0438\u043a \u0410\u0440\u0442\u0435\u043c \u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440\u043e\u0432\u0438\u0447",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "Evan Ferguson",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          }
+        ]
+      },
+      "Lecce": {
+        "shirt_color": "Yellow",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "Wladimiro Falcone",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 0.99
+          },
+          {
+            "name": "Antonino Gallo",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Esmev\u00e2nio Kialonda Gaspar",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Jamil Siebert",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Fr\u00e9d\u00e9ric Guilbert",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Riccardo Sottil",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Lassana Coulibaly",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "\u00c1lex Sala Herrero",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Lameck Banda",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Nikola \u0160tuli\u0107\u041d\u0438\u043a\u043e\u043b\u0430 \u0428\u0442\u0443\u043b\u0438\u045b",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.1
+          },
+          {
+            "name": "Filip Marchwi\u0144ski",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      }
+    }
+  }
+}

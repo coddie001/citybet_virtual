@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Atalanta",
+    "away_team": "Verona",
+    "teams": {
+      "Atalanta": {
+        "shirt_color": "Blue",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Marco Carnesecchi",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.02
+          },
+          {
+            "name": "Davide Zappacosta",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Odilon Kossounou Kouakou",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Sead Kola\u0161inac",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "Raoul Bellanova",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Ademola Olajade Alade Aylola Lookman",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Marten Elco de Roon",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "\u00c9derson Jos\u00e9 dos Santos Louren\u00e7o da Silva",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Yunus Dimoara Musah",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Charles De Ketelaere",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.17
+          },
+          {
+            "name": "Gianluca Scamacca",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.15
+          }
+        ]
+      },
+      "Verona": {
+        "shirt_color": "Blue",
+        "short_color": "Yellow",
+        "players": [
+          {
+            "name": "Lorenzo Montip\u00f2",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Domagoj Bradari\u0107",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Unai N\u00fa\u00f1ez Gestoso",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Victor Enok Nelsson",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "Suat Serdar",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Martin S\u00f8nder Frese",
+            "strength": 20,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Almoatasembellah Ali Mohamed Al Musrati\u0627\u0644\u0645\u0624\u062a\u0645\u0629 \u0639\u0644\u064a \u0645\u062d\u0645\u062f \u0627\u0644\u0645\u0635\u0631\u0627\u062a\u064a",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.09
+          },
+          {
+            "name": "Jean-Daniel Dave Lewis Akpa Akpro",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Tom\u00e1\u0161 Suslov",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Gift Emmanuel Orban",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "Amin Sarr",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      }
+    }
+  }
+}

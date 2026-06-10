@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Chelsea",
+    "away_team": "Everton",
+    "teams": {
+      "Chelsea": {
+        "shirt_color": "Blue",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "Robert Lynch S\u00e1nchez",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "Marc Cucurella Saseta",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Levi Lemar Samuel Colwill",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Trevoh Thomas Chalobah",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Reece James",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Pedro Lomba Neto",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Mois\u00e9s Isaac Caicedo Corozo",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Enzo Jerem\u00edas Fern\u00e1ndez",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Cole Jermaine Palmer",
+            "strength": 100,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Jo\u00e3o Pedro Junqueira de Jesus",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Liam Rory Delap",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      },
+      "Everton": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Jordan Lee Pickford",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Vitalii Mykolenko\u041c\u0438\u043a\u043e\u043b\u0435\u043d\u043a\u043e \u0412\u0456\u0442\u0430\u043b\u0456\u0439 \u0421\u0435\u0440\u0433\u0456\u0439\u043e\u0432\u0438\u0447",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "James Alan Tarkowski",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Jarrad Paul Branthwaite",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Jake O'Brien",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Jack Peter Grealish",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Idrissa Gana Gueye",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Kiernan Frank Dewsbury-Hall",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Iliman Cheikh Baroy Ndiaye",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Thierno Barry",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          },
+          {
+            "name": "Norberto Bercique Gomes Betuncal",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

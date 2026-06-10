@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Eintracht Frankfurt",
+    "away_team": "Werder Bremen",
+    "teams": {
+      "Eintracht Frankfurt": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "M. Zetterer",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "A. Theate",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "R. Koch",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "R. Kristensen",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "N. Collins",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.24
+          },
+          {
+            "name": "A. Knauff",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "M. G\u00f6tze",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "E. Skhiri",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "R. Doan",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "J. Burkardt",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "M. Batshuayi",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      },
+      "Werder Bremen": {
+        "shirt_color": "Green",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "K. Hein",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "F. Agu",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.26
+          },
+          {
+            "name": "M. Friedl",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. W\u00f6ber",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "M. Weiser",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. Gr\u00fcll",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "C. Puertas",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "J. Stage",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "R. Schmid",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "V. Boniface",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "J. Njinmah",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.25
+          }
+        ]
+      }
+    }
+  }
+}

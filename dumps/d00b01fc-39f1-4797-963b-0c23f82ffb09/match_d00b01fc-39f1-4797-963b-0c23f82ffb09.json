@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Torino",
+    "away_team": "Genoa",
+    "teams": {
+      "Torino": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Franco Israel Wibmer",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Cristiano Biraghi",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Perr Schuurs",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Sa\u00fal Basilio Coco Bassey Oubi\u00f1a",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Valentino Lando Lazaro",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Nikola Vla\u0161i\u0107",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Ivan Ili\u0107\u0418\u0432\u0430\u043d \u0418\u043b\u0438\u045b",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Cesare Casadei",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Zakaria Aboukhlal\u0632\u0643\u0631\u064a\u0627\u0621 \u0623\u0628\u0648 \u062e\u0644\u0627\u0644",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Duv\u00e1n Esteban Zapata Banguero",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "Ch\u00e9 Zach Everton Fred Adams",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      },
+      "Genoa": {
+        "shirt_color": "Red",
+        "short_color": "Navy",
+        "players": [
+          {
+            "name": "Nicola Leali",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Aar\u00f3n Mart\u00edn Caricol",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Johan Felipe V\u00e1squez Ibarra",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "Leo Skiri \u00d8stig\u00e5rd",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Morten Wetche Frendrup",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Gnaly Maxwel Cornet",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Nicolae Claudiu Stanciu",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Ruslan Malinovskyi\u041c\u0430\u043b\u0456\u043d\u043e\u0432\u0441\u044c\u043a\u0438\u0439 \u0420\u0443\u0441\u043b\u0430\u043d \u0412\u043e\u043b\u043e\u0434\u0438\u043c\u0438\u0440\u043e\u0432\u0438\u0447",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Junior Walter Messias",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "V\u00edtor Manuel Carvalho Oliveira",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.18
+          },
+          {
+            "name": "Albert Gr\u00f8nb\u00e6k Erlykke",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

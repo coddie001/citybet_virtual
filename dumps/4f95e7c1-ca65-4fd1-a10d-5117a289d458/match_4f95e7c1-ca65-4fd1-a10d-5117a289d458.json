@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Venezia",
+    "away_team": "Inter Milan",
+    "teams": {
+      "Venezia": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Ter Stegen",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Udogie",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 0.98
+          },
+          {
+            "name": "Pavard",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Tapsoba",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 0.97
+          },
+          {
+            "name": "Martinez",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 0.92
+          },
+          {
+            "name": "Gallagher",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Calhanoglu",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.04
+          },
+          {
+            "name": "Bentancur",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "Partey",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 0.99
+          },
+          {
+            "name": "Rashford",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "Leao",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      },
+      "Inter Milan": {
+        "shirt_color": "Blue",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Yann Sommer",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Federico Dimarco",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Alessandro Bastoni",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Francesco Acerbi",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Denzel Justus Morris Dumfries",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Nicol\u00f2 Barella",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Hakan \u00c7alhano\u011flu",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Henrikh Mkhitaryan",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Lautaro Javier Mart\u00ednez",
+            "strength": 100,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Marcus Lilian Thuram-Ulien",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.24
+          },
+          {
+            "name": "Davide Frattesi",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Udinese",
+    "away_team": "Juventus",
+    "teams": {
+      "Udinese": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Maduka Emilio Okoye",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 0.99
+          },
+          {
+            "name": "Hassane Kamara",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Oumar Mickael Solet Bomawoko",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Christian Kabasele",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.09
+          },
+          {
+            "name": "Kingsley Osezele Ehizibue",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Jurgen Peter Ekkelenkamp",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Sandi Lovri\u0107",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Jesper Karlstr\u00f6m",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Nicol\u00f2 Zaniolo",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Adam Buksa",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.12
+          },
+          {
+            "name": "Keinan Vincent Joseph Davis",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      },
+      "Juventus": {
+        "shirt_color": "Black",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Michele Di Gregorio",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Andrea Cambiaso",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Gleison Bremer Silva Nascimento",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Pierre Kazeye Rommel Kalulu Kyatengwa",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Jo\u00e3o M\u00e1rio Neto Lopes",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Filip Kosti\u0107\u0424\u0438\u043b\u0438\u043f \u041a\u043e\u0441\u0442\u0438\u045b",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Manuel Locatelli",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Teun Koopmeiners",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Francisco Fernandes da Concei\u00e7\u00e3o",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Ikoma Lo\u00efs Openda",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.28
+          },
+          {
+            "name": "Du\u0161an Vlahovi\u0107\u0414\u0443\u0448\u0430\u043d \u0412\u043b\u0430\u0445\u043e\u0432\u0438\u045b",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      }
+    }
+  }
+}

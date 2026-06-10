@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Borussia Dortmund",
+    "away_team": "FC Augsburg",
+    "teams": {
+      "Borussia Dortmund": {
+        "shirt_color": "Yellow",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Gregor Kobel",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Julian Ryerson",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Nico Cedric Schlotterbeck",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Emre Can",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Yan Bueno Couto",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Karim-David Adeyemi",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.29
+          },
+          {
+            "name": "Felix Kalu Nmecha",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Pascal Gro\u00df",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.07
+          },
+          {
+            "name": "Maximilian Beier",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Serhou Yadaly Guirassy",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.18
+          },
+          {
+            "name": "F\u00e1bio Daniel Soares Silva",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      },
+      "FC Augsburg": {
+        "shirt_color": "White",
+        "short_color": "Green",
+        "players": [
+          {
+            "name": "Finn Gilbert Dahmen",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "Dimitris Giannoulis\u0394\u03b7\u03bc\u03ae\u03c4\u03c1\u03b9\u03bf\u03c2 \u0393\u03b9\u03b1\u03bd\u03bd\u03bf\u03cd\u03bb\u03b7\u03c2",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Jeffrey Gouweleeuw",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Chrislain Iris Aurel Matsima",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Marius Wolf",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Alexis Claude-Maurice",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Kristijan Jaki\u0107",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Elvis Rexhbe\u00e7aj",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Arne Maier",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Phillip Tietz",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "Samuel Emmanuel Essende Mbongu",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

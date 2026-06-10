@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Mallorca",
+    "away_team": "Athletic Bilbao",
+    "teams": {
+      "Mallorca": {
+        "shirt_color": "Red",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Leonardo Rom\u00e1n Riquelme",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Johan Andr\u00e9s Mojica Palacio",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Antonio Jos\u00e9 Ra\u00edllo Arenas",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.04
+          },
+          {
+            "name": "Martin Valjent",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "Pablo Carmine Maffeo Becerra",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Sergi Darder Moll",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Samuel de Almeida Costa",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Manuel Morlanes Ari\u00f1o",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Daniel Jos\u00e9 Rodr\u00edguez V\u00e1zquez",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Vedat Muriqi",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.08
+          },
+          {
+            "name": "Takuma Asano\u6d45\u91ce \u62d3\u78e8",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "Athletic Bilbao": {
+        "shirt_color": "Red",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Unai Sim\u00f3n Mendibil",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Yuri Berchiche Izeta",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Daniel Vivian Moreno",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Aymeric Jean Louis Gerard Alphonse Laporte",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.08
+          },
+          {
+            "name": "Andoni Gorosabel Espinosa",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Nicholas Williams Arthuer",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Oihan Sancet Tirapu",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "I\u00f1igo Ruiz de Galarreta Etxeberria",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "I\u00f1aki Williams Arthuer",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.28
+          },
+          {
+            "name": "Gorka Guruzeta Rodr\u00edguez",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          },
+          {
+            "name": "Alejandro Berenguer Remiro",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      }
+    }
+  }
+}

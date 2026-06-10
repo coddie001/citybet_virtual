@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Osasuna",
+    "away_team": "Real Betis",
+    "teams": {
+      "Osasuna": {
+        "shirt_color": "Red",
+        "short_color": "Navy",
+        "players": [
+          {
+            "name": "Sergio Herrera",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Abel Bretones",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Catena",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "F. Boyomo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "V. Rosier",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Moi G\u00f3mez",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Moncayola",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Lucas Torr\u00f3",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.03
+          },
+          {
+            "name": "Rub\u00e9n Garc\u00eda",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.18
+          },
+          {
+            "name": "A. Budimir",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.12
+          },
+          {
+            "name": "S. Becker",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.27
+          }
+        ]
+      },
+      "Real Betis": {
+        "shirt_color": "Green",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Pau L\u00f3pez",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "V. G\u00f3mez",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Diego Llorente",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Bartra",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Aitor Ruibal",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Isco",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.15
+          },
+          {
+            "name": "G. Lo",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Fornals",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Antony",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Cucho",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          },
+          {
+            "name": "C. Bakambu",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      }
+    }
+  }
+}

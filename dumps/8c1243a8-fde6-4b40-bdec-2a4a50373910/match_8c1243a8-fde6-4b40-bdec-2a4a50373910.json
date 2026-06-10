@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Alaves",
+    "away_team": "Girona",
+    "teams": {
+      "Alaves": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Antonio Sivera Salv\u00e1",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jonathan Castro Otto",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Facundo Nahuel Tenaglia",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Jon Pacheco Dozagarat",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Ander Guevara Lajo",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.03
+          },
+          {
+            "name": "Denis Su\u00e1rez Fern\u00e1ndez",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jon Guridi Aldalur",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Antonio Blanco Conde",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Carlos Vicente Robles",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Antonio Mart\u00ednez L\u00f3pez",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Lucas Ariel Boy\u00e9",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      },
+      "Girona": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Dominik Livakovi\u0107",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Alexandre Moreno Lopera",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Daley Blind",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.01
+          },
+          {
+            "name": "Axel Laurent Angel Lambert Witsel",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 0.99
+          },
+          {
+            "name": "Arnau Mart\u00ednez L\u00f3pez",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Bryan Gil Salvatierra",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Thomas Lemar",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Iv\u00e1n Mart\u00edn N\u00fa\u00f1ez",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Viktor Tsygankov\u0426\u0438\u0433\u0430\u043d\u043a\u043e\u0432 \u0412\u0456\u043a\u0442\u043e\u0440 \u0412\u0456\u0442\u0430\u043b\u0456\u0439\u043e\u0432\u0438\u0447",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Cristhian Ricardo Stuani Curbelo",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.13
+          },
+          {
+            "name": "Vladyslav Vanat\u0412\u0430\u043d\u0430\u0442 \u0412\u043b\u0430\u0434\u0438\u0441\u043b\u0430\u0432 \u0410\u043d\u0434\u0440\u0456\u0439\u043e\u0432\u0438\u0447",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      }
+    }
+  }
+}

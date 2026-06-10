@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Empoli",
+    "away_team": "Udinese",
+    "teams": {
+      "Empoli": {
+        "shirt_color": "Blue",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "Andrea Fulignati",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "Salvatore Elia",
+            "strength": 20,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Marco Curto",
+            "strength": 20,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Matteo Lovato",
+            "strength": 20,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Tyronne Efe Ebuehi",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Rare\u015f Ilie",
+            "strength": 20,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Gerard Yepes Laut",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Andrea Ghion",
+            "strength": 20,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Lars Joseph Ceesay",
+            "strength": 20,
+            "role": "RM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Pietro Pellegri",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "Marco Nasti",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.11
+          }
+        ]
+      },
+      "Udinese": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Maduka Emilio Okoye",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 0.99
+          },
+          {
+            "name": "Hassane Kamara",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Oumar Mickael Solet Bomawoko",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Christian Kabasele",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.09
+          },
+          {
+            "name": "Kingsley Osezele Ehizibue",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Jurgen Peter Ekkelenkamp",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Sandi Lovri\u0107",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Jesper Karlstr\u00f6m",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Nicol\u00f2 Zaniolo",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Adam Buksa",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.12
+          },
+          {
+            "name": "Keinan Vincent Joseph Davis",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      }
+    }
+  }
+}

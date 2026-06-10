@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Alaves",
+    "away_team": "Rayo Vallecano",
+    "teams": {
+      "Alaves": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Sivera",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jonny",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "N. Tenaglia",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Pacheco",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Ander Guevara",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.03
+          },
+          {
+            "name": "Denis Su\u00e1rez",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Guridi",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Antonio Blanco",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Carlos Vicente",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Toni Mart\u00ednez",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "L. Boy\u00e9",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      },
+      "Rayo Vallecano": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "A. Batalla",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Pep Chavarr\u00eda",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "F. Lejeune",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "P. Ciss",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "A. Ra\u021biu",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.27
+          },
+          {
+            "name": "\u00c1lvaro Garc\u00eda",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "\u00d3scar Valent\u00edn",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Isi",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.23
+          },
+          {
+            "name": "De Frutos",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Sergio Camello",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.17
+          },
+          {
+            "name": "Alem\u00e3o",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

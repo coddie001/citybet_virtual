@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Lecce",
+    "away_team": "Venezia",
+    "teams": {
+      "Lecce": {
+        "shirt_color": "Yellow",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "W. Falcone",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 0.99
+          },
+          {
+            "name": "A. Gallo",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Kialonda Gaspar",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "J. Siebert",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "F. Guilbert",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.17
+          },
+          {
+            "name": "R. Sottil",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "L. Coulibaly",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "\u00c0lex Sala",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "L. Banda",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "N. \u0160tuli\u0107",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.1
+          },
+          {
+            "name": "F. Marchwi\u0144ski",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      },
+      "Venezia": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "F. Stankovi\u0107",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "B. Franji\u0107",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "M. Svoboda",
+            "strength": 20,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "A. Duncan",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "A. Hainaut",
+            "strength": 20,
+            "role": "RB",
+            "velocity": 1.15
+          },
+          {
+            "name": "R. Haps",
+            "strength": 20,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "G. Busio",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Kike P\u00e9rez",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "J. Yeboah",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Casas",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Adorante",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      }
+    }
+  }
+}

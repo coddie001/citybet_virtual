@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Mainz 05",
+    "away_team": "St. Pauli",
+    "teams": {
+      "Mainz 05": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "R. Zentner",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "P. Mwene",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "D. Kohr",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "D. da",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "A. Caci",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.18
+          },
+          {
+            "name": "B. Hollerbach",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "N. Amiri",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "K. Sano",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "P. Nebel",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.17
+          },
+          {
+            "name": "A. Nordin",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Sieb",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "St. Pauli": {
+        "shirt_color": "Brown",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "N. Vasilj",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "J. Irvine",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "E. Smith",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "H. Wahl",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.1
+          },
+          {
+            "name": "M. Saliakas",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "M. Pereira",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "J. Sands",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.07
+          },
+          {
+            "name": "C. Metcalfe",
+            "strength": 20,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "D. Afolayan",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "M. Kaars",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.22
+          },
+          {
+            "name": "A. Hountondji",
+            "strength": 20,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

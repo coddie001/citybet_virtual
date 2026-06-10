@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Newcastle United",
+    "away_team": "West Ham United",
+    "teams": {
+      "Newcastle United": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "N. Pope",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "L. Hall",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "F. Sch\u00e4r",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.08
+          },
+          {
+            "name": "S. Botman",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "K. Trippier",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.15
+          },
+          {
+            "name": "A. Gordon",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Bruno Guimar\u00e3es",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "S. Tonali",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "J. Murphy",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Y. Wissa",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.24
+          },
+          {
+            "name": "N. Woltemade",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      },
+      "West Ham United": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "A. Areola",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "K. Walker-Peters",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "J. Todibo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "M. Kilman",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "A. Wan-Bissaka",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Lucas Paquet\u00e1",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.16
+          },
+          {
+            "name": "T. Sou\u010dek",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.05
+          },
+          {
+            "name": "J. Ward-Prowse",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.04
+          },
+          {
+            "name": "J. Bowen",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "N. F\u00fcllkrug",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "C. Wilson",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

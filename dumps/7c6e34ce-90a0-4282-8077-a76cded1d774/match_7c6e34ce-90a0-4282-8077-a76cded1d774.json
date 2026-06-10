@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Real Madrid",
+    "away_team": "Rayo Vallecano",
+    "teams": {
+      "Real Madrid": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Thibaut Nicolas Marc Courtois",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Eduardo Celmi Camavinga",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Antonio R\u00fcdiger",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "\u00c9der Gabriel Milit\u00e3o",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Federico Santiago Valverde Dipetta",
+            "strength": 100,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Kylian Mbapp\u00e9 Lottin",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.29
+          },
+          {
+            "name": "Jude Victor William Bellingham",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Aur\u00e9lien Djani Tchouameni",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Rodrygo Silva de Goes",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Vinicius Jos\u00e9 Paix\u00e3o de Oliveira Junior",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.28
+          },
+          {
+            "name": "Endrick Felipe Moreira de Sousa",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      },
+      "Rayo Vallecano": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Augusto Mart\u00edn Batalla Barga",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Josep Mar\u00eda Chavarr\u00eda P\u00e9rez",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Florian Gr\u00e9goire Claude Lejeune",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Path\u00e9 Isma\u00ebl Ciss",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Andrei Florin Ra\u021biu",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.27
+          },
+          {
+            "name": "\u00c1lvaro Garc\u00eda Rivera",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "\u00d3scar Valent\u00edn Mart\u00edn Luengo",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Isaac Palaz\u00f3n Camacho",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Jorge de Frutos Sebasti\u00e1n",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Sergio Camello P\u00e9rez",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.17
+          },
+          {
+            "name": "Alexandre Zurawski",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

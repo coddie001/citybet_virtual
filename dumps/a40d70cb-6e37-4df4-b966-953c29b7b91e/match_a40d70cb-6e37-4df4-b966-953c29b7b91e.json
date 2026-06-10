@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Aston Villa",
+    "away_team": "Wolverhampton Wanderers",
+    "teams": {
+      "Aston Villa": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Dami\u00e1n Emiliano Mart\u00ednez Romero",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "John McGinn",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Ezri Konsa Ngoyo",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Pau Francisco Torres",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Matthew Stuart Cash",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Morgan Elliot Rogers",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Youri Tielemans",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Boubacar Bernard Kamara",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Jadon Malik Sancho",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Oliver George Arthur Watkins",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Evann Guessand",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "Wolverhampton Wanderers": {
+        "shirt_color": "Orange",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Jos\u00e9 Pedro Malheiro de S\u00e1",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "Hugo Bueno L\u00f3pez",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Emmanuel Elysee Djedje Agbadou Badobre",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Ladislav Krej\u010d\u00ed",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Jackson Tchatchoua",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.26
+          },
+          {
+            "name": "Jhon Adolfo Arias Andrade",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Jo\u00e3o Victor Gomes da Silva",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.09
+          },
+          {
+            "name": "Andr\u00e9 Trindade da Costa Neto",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "Marshall Nyasha Munetsi",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Toluwalase Emmanuel Arokodare",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "J\u00f8rgen Strand Larsen",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

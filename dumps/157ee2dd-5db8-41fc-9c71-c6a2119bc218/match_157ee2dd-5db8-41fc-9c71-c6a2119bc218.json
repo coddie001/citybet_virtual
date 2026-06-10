@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Southampton",
+    "away_team": "Brentford",
+    "teams": {
+      "Southampton": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Gavin Okeroghene Bazunu",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "Ryan Phelim Manning",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Taylor Jay Harwood-Bellis",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Jack Stephens",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.05
+          },
+          {
+            "name": "Elias Jelert Kristensen",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Finn Isaac Azaz",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Flynn Downes",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Joseph Oluwaseyi Temitope Ayodele-Aribo",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Tom Allen Fellows",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Adam James Armstrong",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "Leonardo Weschenfelder Scienza",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      },
+      "Brentford": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Caoimh\u00edn Odhr\u00e1n Kelleher",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Keane William Lewis-Potter",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Nathan Michael Collins",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Sepp van den Berg",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Kristoffer Vassbakk K\u00f6pp Ajer",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Kevin Schade",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Mikkel Krogh Damsgaard",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Jordan Brian Henderson",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Dango Aboubacar Faissal Ouattara",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "Igor Thiago Nascimento Rodrigues",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Reiss Luke Nelson",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      }
+    }
+  }
+}

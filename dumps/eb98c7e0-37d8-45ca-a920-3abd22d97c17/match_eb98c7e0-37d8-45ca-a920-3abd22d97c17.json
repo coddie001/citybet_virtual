@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Werder Bremen",
+    "away_team": "Borussia Dortmund",
+    "teams": {
+      "Werder Bremen": {
+        "shirt_color": "Green",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "K. Hein",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "F. Agu",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.26
+          },
+          {
+            "name": "M. Friedl",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. W\u00f6ber",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "M. Weiser",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. Gr\u00fcll",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "C. Puertas",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "J. Stage",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "R. Schmid",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "V. Boniface",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "J. Njinmah",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.25
+          }
+        ]
+      },
+      "Borussia Dortmund": {
+        "shirt_color": "Yellow",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "G. Kobel",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "J. Ryerson",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "N. Schlotterbeck",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "E. Can",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Yan Couto",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "K. Adeyemi",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.29
+          },
+          {
+            "name": "F. Nmecha",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.23
+          },
+          {
+            "name": "P. Gro\u00df",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.07
+          },
+          {
+            "name": "M. Beier",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "S. Guirassy",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.18
+          },
+          {
+            "name": "F\u00e1bio Silva",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      }
+    }
+  }
+}

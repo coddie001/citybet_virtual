@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Bologna",
+    "away_team": "Monza",
+    "teams": {
+      "Bologna": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "\u0141. Skorupski",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Juan Miranda",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "J. Lucum\u00ed",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "N. Casale",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "N. Zortea",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "R. Orsolini",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "R. Freuler",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "L. Ferguson",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "F. Bernardeschi",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "C. Immobile",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "S. Castro",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      },
+      "Monza": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "D. Thiam",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.11
+          },
+          {
+            "name": "Paulo Azzi",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.24
+          },
+          {
+            "name": "A. Izzo",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.04
+          },
+          {
+            "name": "A. Carboni",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.09
+          },
+          {
+            "name": "S. Birindelli",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "P. Ciurria",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Colpani",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. Pessina",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "G. Caprari",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Dany Mota",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. \u00c1lvarez",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      }
+    }
+  }
+}

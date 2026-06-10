@@ -1,0 +1,35 @@
+[workspace]
+members = ["src/core", "src/database", "src/web"]
+exclude = [".dev/match"]
+
+[workspace.package]
+version = "1.1.339"
+
+authors = ["Artemov Ivan (ZOXEXIVO) <zoxexivo@gmail.com>"]
+edition = "2024"
+
+[package]
+name = "open_football"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[features]
+# Pass-throughs for the match engine features defined in `core` and
+# forwarded by `web`. Run the app with e.g. `cargo run --features
+# match-stub` to enable the 0-0 stub for profiling.
+match = ["match-logs", "match-stub"]
+match-logs = ["simulator_core/match-logs", "web/match-logs"]
+match-stub = ["simulator_core/match-stub", "web/match-stub"]
+
+[dependencies]
+simulator_core = { path = "src/core", package = "core" }
+web = { path = "src/web" }
+database = { path = "src/database" }
+log = { version = "0.4.29", features = ["release_max_level_info"] }
+env_logger = "0.11.10"
+color-eyre = "0.6.5"
+tokio = { version = "1.52.3", features = ["full"] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+tikv-jemallocator = "0.6"

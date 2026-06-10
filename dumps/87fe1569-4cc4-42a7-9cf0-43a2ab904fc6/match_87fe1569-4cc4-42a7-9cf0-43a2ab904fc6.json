@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Napoli",
+    "away_team": "Roma",
+    "teams": {
+      "Napoli": {
+        "shirt_color": "SkyBlue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "A. Meret",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "Miguel Guti\u00e9rrez",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "A. Rrahmani",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "A. Buongiorno",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "G. Di",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "S. McTominay",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "K. De",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "S. Lobotka",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "M. Politano",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "R. Lukaku",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.21
+          },
+          {
+            "name": "R. H\u00f8jlund",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      },
+      "Roma": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "M. Svilar",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Angeli\u00f1o",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "G. Mancini",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "E. Ndicka",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Wesley",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "P. Dybala",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "L. Pellegrini",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "B. Cristante",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.09
+          },
+          {
+            "name": "L. Bailey",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "A. Dovbyk",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "E. Ferguson",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          }
+        ]
+      }
+    }
+  }
+}

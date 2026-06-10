@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Eintracht Frankfurt",
+    "away_team": "Mainz 05",
+    "teams": {
+      "Eintracht Frankfurt": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Michael Zetterer",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Arthur Nicolas Theate",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Robin Leon Koch",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Rasmus Nissen Kristensen",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "Pharrell Nnamdi Collins",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Ansgar Knauff",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Mario G\u00f6tze",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Ellyes Joris Skhiri\u0625\u0644\u064a\u0627\u0633 \u0635\u062e\u064a\u0631\u064a",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Ritsu Doan\u5802\u5b89 \u5f8b",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Jonathan Michael Burkardt",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "Michy Batshuayi-Atunga",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      },
+      "Mainz 05": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Robin Zentner",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "Phillipp Mwene",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Dominik Kohr",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Danny Vieira da Costa",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Anthony Caci",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Benedict Hollerbach",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Nadiem Amiri",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Kaishu Sano\u4f50\u91ce \u6d77\u821f",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Paul Nebel",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Arnaud Dominique Nordin",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Armindo Sieb",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      }
+    }
+  }
+}

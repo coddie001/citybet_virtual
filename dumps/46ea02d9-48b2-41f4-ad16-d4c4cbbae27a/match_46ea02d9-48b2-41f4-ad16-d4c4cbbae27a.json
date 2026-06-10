@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Athletic Bilbao",
+    "away_team": "Alaves",
+    "teams": {
+      "Athletic Bilbao": {
+        "shirt_color": "Red",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Unai Sim\u00f3n Mendibil",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Yuri Berchiche Izeta",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Daniel Vivian Moreno",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Aymeric Jean Louis Gerard Alphonse Laporte",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.08
+          },
+          {
+            "name": "Andoni Gorosabel Espinosa",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Nicholas Williams Arthuer",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Oihan Sancet Tirapu",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "I\u00f1igo Ruiz de Galarreta Etxeberria",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "I\u00f1aki Williams Arthuer",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.28
+          },
+          {
+            "name": "Gorka Guruzeta Rodr\u00edguez",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          },
+          {
+            "name": "Alejandro Berenguer Remiro",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "Alaves": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Antonio Sivera Salv\u00e1",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jonathan Castro Otto",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Facundo Nahuel Tenaglia",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Jon Pacheco Dozagarat",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Ander Guevara Lajo",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.03
+          },
+          {
+            "name": "Denis Su\u00e1rez Fern\u00e1ndez",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jon Guridi Aldalur",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Antonio Blanco Conde",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Carlos Vicente Robles",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Antonio Mart\u00ednez L\u00f3pez",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "Lucas Ariel Boy\u00e9",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      }
+    }
+  }
+}

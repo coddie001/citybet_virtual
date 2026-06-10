@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Como",
+    "away_team": "Empoli",
+    "teams": {
+      "Como": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Jean Butez",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Alberto Moreno P\u00e9rez",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Diego Carlos Santos Silva",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Marc Oliver Kempf",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Stefan Posch",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Assane Diao Diaoune",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Nicol\u00e1s Paz Mart\u00ednez",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Maxence Caqueret",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Nicolas-Gerrit K\u00fchn",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.26
+          },
+          {
+            "name": "\u00c1lvaro Borja Morata Mart\u00edn",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          },
+          {
+            "name": "Anastasios Douvikas\u0391\u03bd\u03b1\u03c3\u03c4\u03ac\u03c3\u03b9\u03bf\u03c2 \u0394\u03bf\u03c5\u03b2\u03af\u03ba\u03b1\u03c2",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      },
+      "Empoli": {
+        "shirt_color": "Blue",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "Oblak",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 0.95
+          },
+          {
+            "name": "Dimarco",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.0
+          },
+          {
+            "name": "Pavard Jr",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 0.97
+          },
+          {
+            "name": "Cubarsi Jr",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.09
+          },
+          {
+            "name": "Shaw",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.1
+          },
+          {
+            "name": "Jorginho",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Anguissa",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "Caicedo",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 0.99
+          },
+          {
+            "name": "Palacios",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.07
+          },
+          {
+            "name": "Vinicius",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.14
+          },
+          {
+            "name": "Hojlund",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      }
+    }
+  }
+}

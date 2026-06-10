@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Real Sociedad",
+    "away_team": "Las Palmas",
+    "teams": {
+      "Real Sociedad": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Alejandro Remiro Gargallo",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "Sergio G\u00f3mez Mart\u00edn",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Igor Zubeld\u00eda Elorza",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Aritz Elustondo Irribaria",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "Jon Mikel Aramburu Mej\u00edas",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Mikel Oyarzabal Ugarte",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Yangel Clemente Herrera Ravelo",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Brais M\u00e9ndez Portela",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Takefusa Kubo\u4e45\u4fdd \u5efa\u82f1",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "Umar Sadiq Mesbah",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "Gon\u00e7alo Manuel Ganchinho Guedes",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      },
+      "Las Palmas": {
+        "shirt_color": "Yellow",
+        "short_color": "Blue",
+        "players": [
+          {
+            "name": "Martinez",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 0.91
+          },
+          {
+            "name": "Balde",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.01
+          },
+          {
+            "name": "Udogie",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.1
+          },
+          {
+            "name": "Tah",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 0.93
+          },
+          {
+            "name": "Pavard",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 0.97
+          },
+          {
+            "name": "Gundogan",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 0.98
+          },
+          {
+            "name": "Casemiro",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 0.97
+          },
+          {
+            "name": "Camavinga",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Tchouameni",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Rashford",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Madueke",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      }
+    }
+  }
+}

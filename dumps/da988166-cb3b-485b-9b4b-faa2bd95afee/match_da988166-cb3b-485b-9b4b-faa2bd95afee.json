@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Mallorca",
+    "away_team": "Espanyol",
+    "teams": {
+      "Mallorca": {
+        "shirt_color": "Red",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Leo Rom\u00e1n",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "J. Mojica",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Ra\u00edllo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.04
+          },
+          {
+            "name": "M. Valjent",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "Maffeo",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Sergi Darder",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Sam\u00fa Costa",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Manu Morlanes",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Dani Rodr\u00edguez",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "V. Muriqi",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.08
+          },
+          {
+            "name": "T. Asano",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "Espanyol": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "M. Dmitrovi\u0107",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "Carlos Romero",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "L. Cabrera",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "O. El",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.24
+          },
+          {
+            "name": "Pol Lozano",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Puado",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Terrats",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Edu Exp\u00f3sito",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Jofre",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Kike Garc\u00eda",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.04
+          },
+          {
+            "name": "Roberto",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Inter Milan",
+    "away_team": "Como",
+    "teams": {
+      "Inter Milan": {
+        "shirt_color": "Blue",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Yann Sommer",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Federico Dimarco",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Alessandro Bastoni",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Francesco Acerbi",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Denzel Justus Morris Dumfries",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "Nicol\u00f2 Barella",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Hakan \u00c7alhano\u011flu",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Henrikh Mkhitaryan",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Lautaro Javier Mart\u00ednez",
+            "strength": 100,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Marcus Lilian Thuram-Ulien",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.24
+          },
+          {
+            "name": "Davide Frattesi",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      },
+      "Como": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Jean Butez",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "Alberto Moreno P\u00e9rez",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Diego Carlos Santos Silva",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Marc Oliver Kempf",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Stefan Posch",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Assane Diao Diaoune",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.26
+          },
+          {
+            "name": "Nicol\u00e1s Paz Mart\u00ednez",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Maxence Caqueret",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Nicolas-Gerrit K\u00fchn",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.26
+          },
+          {
+            "name": "\u00c1lvaro Borja Morata Mart\u00edn",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          },
+          {
+            "name": "Anastasios Douvikas\u0391\u03bd\u03b1\u03c3\u03c4\u03ac\u03c3\u03b9\u03bf\u03c2 \u0394\u03bf\u03c5\u03b2\u03af\u03ba\u03b1\u03c2",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      }
+    }
+  }
+}

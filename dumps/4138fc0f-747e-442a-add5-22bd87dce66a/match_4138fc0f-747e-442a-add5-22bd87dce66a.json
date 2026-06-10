@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Bologna",
+    "away_team": "Udinese",
+    "teams": {
+      "Bologna": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "\u0141ukasz Skorupski",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Juan Miranda Gonz\u00e1lez",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Jhon Janer Lucum\u00ed Bonilla",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "Nicol\u00f2 Casale",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Nadir Zortea",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Riccardo Orsolini",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Remo Marco Freuler",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "Lewis Ferguson",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Federico Bernardeschi",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Ciro Immobile",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "Santiago Tom\u00e1s Castro",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      },
+      "Udinese": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Maduka Emilio Okoye",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 0.99
+          },
+          {
+            "name": "Hassane Kamara",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Oumar Mickael Solet Bomawoko",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Christian Kabasele",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.09
+          },
+          {
+            "name": "Kingsley Osezele Ehizibue",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Jurgen Peter Ekkelenkamp",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Sandi Lovri\u0107",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Jesper Karlstr\u00f6m",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Nicol\u00f2 Zaniolo",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Adam Buksa",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.12
+          },
+          {
+            "name": "Keinan Vincent Joseph Davis",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.14
+          }
+        ]
+      }
+    }
+  }
+}

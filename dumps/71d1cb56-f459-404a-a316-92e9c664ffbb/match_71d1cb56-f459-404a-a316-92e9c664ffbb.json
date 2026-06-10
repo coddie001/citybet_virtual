@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Brighton & Hove Albion",
+    "away_team": "Bournemouth",
+    "teams": {
+      "Brighton & Hove Albion": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Bart Verbruggen",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Maxim De Cuyper",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Jan Paul van Hecke",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Olivier Maxime Boscagli",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Ferdi Erenay Kad\u0131o\u011flu",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Kaoru Mitoma\u4e09\u7b18 \u85ab",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Carlos Noom Quomah Baleba",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Mats Wieffer",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Yankuba Minteh",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.28
+          },
+          {
+            "name": "Daniel Nii Tackie Mensah Welbeck",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.12
+          },
+          {
+            "name": "Georginio Rutter",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      },
+      "Bournemouth": {
+        "shirt_color": "Red",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "\u0110or\u0111e Petrovi\u0107\u0402\u043e\u0440\u0452\u0435 \u041f\u0435\u0442\u0440\u043e\u0432\u0438\u045b",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "Adrien Truffert",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Bafod\u00e9 Diakit\u00e9",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Marcos Nicol\u00e1s Senesi Bar\u00f3n",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.1
+          },
+          {
+            "name": "Lewis John Cook",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Justin Dean Kluivert",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Ryan Christie",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Tyler Shaan Adams",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "Antoine Serlom Semenyo",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Francisco Evanilson de Lima Barbosa",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "Amine Adli\u0623\u0645\u064a\u0646 \u0639\u062f\u0644\u064a",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      }
+    }
+  }
+}

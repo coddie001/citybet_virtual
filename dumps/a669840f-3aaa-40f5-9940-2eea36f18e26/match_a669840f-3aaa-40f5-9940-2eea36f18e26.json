@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Valencia",
+    "away_team": "Real Sociedad",
+    "teams": {
+      "Valencia": {
+        "shirt_color": "White",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "S. Dimitrievski",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.03
+          },
+          {
+            "name": "Gay\u00e0",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "M. Diakhaby",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "C\u00e9sar T\u00e1rrega",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "Thierry Correia",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.26
+          },
+          {
+            "name": "Luis Rioja",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Pepelu",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.14
+          },
+          {
+            "name": "Javi Guerra",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Diego L\u00f3pez",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.22
+          },
+          {
+            "name": "Hugo Duro",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.17
+          },
+          {
+            "name": "L. Beltr\u00e1n",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      },
+      "Real Sociedad": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "\u00c1lex Remiro",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "Sergio G\u00f3mez",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Zubeldia",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Aritz Elustondo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "J. Aramburu",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Oyarzabal",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Y. Herrera",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "Brais M\u00e9ndez",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "T. Kubo",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "U. Sadiq",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.23
+          },
+          {
+            "name": "Guedes",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          }
+        ]
+      }
+    }
+  }
+}

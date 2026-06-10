@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "West Ham United",
+    "away_team": "Crystal Palace",
+    "teams": {
+      "West Ham United": {
+        "shirt_color": "Navy",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Alphonse Francis Ar\u00e9ola",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "Kyle Leonardus Walker-Peters",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Jean-Clair Dimitri Roger Todibo",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Maximilian William Kilman",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "Aaron Wan-Bissaka",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.21
+          },
+          {
+            "name": "Lucas Tolentino Coelho de Lima",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Tom\u00e1\u0161 Sou\u010dek",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.05
+          },
+          {
+            "name": "James Michael Edward Ward-Prowse",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.04
+          },
+          {
+            "name": "Jarrod Bowen",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.19
+          },
+          {
+            "name": "Niclas F\u00fcllkrug",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "Callum Eddie Graham Wilson",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      },
+      "Crystal Palace": {
+        "shirt_color": "Blue",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "Dean Bradley Henderson",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "Tyrick Kwon Mitchell",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Addji Keaninkin Marc-Israel Gu\u00e9hi",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "Guy Maxence Lacroix",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.25
+          },
+          {
+            "name": "Daniel Mu\u00f1oz Mej\u00eda",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Y\u00e9remy Jes\u00fas Pino Santos",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "Adam James Wharton",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "Daichi Kamada\u938c\u7530 \u5927\u5730",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Isma\u00efla Sarr",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Jean-Philippe Mateta",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "Christantus Ugonna Uche Uche",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Venezia",
+    "away_team": "Verona",
+    "teams": {
+      "Venezia": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "F. Stankovi\u0107",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "B. Franji\u0107",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "M. Svoboda",
+            "strength": 20,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "A. Duncan",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "A. Hainaut",
+            "strength": 20,
+            "role": "RB",
+            "velocity": 1.15
+          },
+          {
+            "name": "R. Haps",
+            "strength": 20,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "G. Busio",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.18
+          },
+          {
+            "name": "Kike P\u00e9rez",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "J. Yeboah",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Casas",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Adorante",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.17
+          }
+        ]
+      },
+      "Verona": {
+        "shirt_color": "Blue",
+        "short_color": "Yellow",
+        "players": [
+          {
+            "name": "L. Montip\u00f2",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.05
+          },
+          {
+            "name": "D. Bradari\u0107",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "Unai N\u00fa\u00f1ez",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "V. Nelsson",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.13
+          },
+          {
+            "name": "S. Serdar",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.16
+          },
+          {
+            "name": "M. Frese",
+            "strength": 20,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Al",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.09
+          },
+          {
+            "name": "J. Akpa",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "T. Suslov",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "G. Orban",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "A. Sarr",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      }
+    }
+  }
+}

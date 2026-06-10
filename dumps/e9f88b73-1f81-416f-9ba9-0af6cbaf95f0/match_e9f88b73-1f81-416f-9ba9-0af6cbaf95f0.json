@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "SC Freiburg",
+    "away_team": "VfB Stuttgart",
+    "teams": {
+      "SC Freiburg": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "N. Atubolu",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "C. G\u00fcnter",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.23
+          },
+          {
+            "name": "M. Ginter",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.1
+          },
+          {
+            "name": "P. Lienhart",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "P. Treu",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "V. Grifo",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.17
+          },
+          {
+            "name": "M. Eggestein",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.12
+          },
+          {
+            "name": "P. Osterhage",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "E. Dink\u00e7i",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.24
+          },
+          {
+            "name": "L. H\u00f6ler",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "Y. Suzuki",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      },
+      "VfB Stuttgart": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "A. N\u00fcbel",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "M. Mittelst\u00e4dt",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.22
+          },
+          {
+            "name": "J. Chabot",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "D. Zagadou",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "L. Assignon",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.2
+          },
+          {
+            "name": "C. F\u00fchrich",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.23
+          },
+          {
+            "name": "A. Stiller",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "A. Karazor",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "J. Leweling",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "D. Undav",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.15
+          },
+          {
+            "name": "E. Demirovi\u0107",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.18
+          }
+        ]
+      }
+    }
+  }
+}

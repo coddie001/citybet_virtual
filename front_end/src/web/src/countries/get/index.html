@@ -1,0 +1,21 @@
+{% extends "countries/countries_layout.html" %}
+
+{% block content %}
+<div class="fm-page">
+    <section class="fm-panel">
+        <div class="fm-panel-head">
+            <h3>{{ i18n.t("leagues") }}</h3>
+        </div>
+        <div class="fm-league-list">
+            {% for league in leagues %}
+            {% if !league.is_cup %}
+            <a href="/{{ lang }}/leagues/{{ league.slug }}" class="fm-league-item">
+                <i class="fa fa-trophy"></i>
+                <span>{{ league.name }}</span>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

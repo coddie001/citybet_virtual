@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Crystal Palace",
+    "away_team": "Liverpool",
+    "teams": {
+      "Crystal Palace": {
+        "shirt_color": "Blue",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "D. Henderson",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "T. Mitchell",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "M. Gu\u00e9hi",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "M. Lacroix",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.25
+          },
+          {
+            "name": "D. Mu\u00f1oz",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Yeremy Pino",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Wharton",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "D. Kamada",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "I. Sarr",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.27
+          },
+          {
+            "name": "J. Mateta",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "C. Uche",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      },
+      "Liverpool": {
+        "shirt_color": "Red",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "Alisson",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.09
+          },
+          {
+            "name": "M. Kerkez",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.25
+          },
+          {
+            "name": "V. van",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.18
+          },
+          {
+            "name": "I. Konat\u00e9",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "J. Frimpong",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.28
+          },
+          {
+            "name": "M. Salah",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.25
+          },
+          {
+            "name": "A. Mac",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.15
+          },
+          {
+            "name": "F. Wirtz",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "F. Chiesa",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "A. Isak",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.22
+          },
+          {
+            "name": "H. Ekitik\u00e9",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      }
+    }
+  }
+}

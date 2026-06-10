@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Southampton",
+    "away_team": "Crystal Palace",
+    "teams": {
+      "Southampton": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "G. Bazunu",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.06
+          },
+          {
+            "name": "R. Manning",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.16
+          },
+          {
+            "name": "T. Harwood-Bellis",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.15
+          },
+          {
+            "name": "J. Stephens",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.05
+          },
+          {
+            "name": "E. Jelert",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "F. Azaz",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.19
+          },
+          {
+            "name": "F. Downes",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "J. Aribo",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "T. Fellows",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "A. Armstrong",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "L\u00e9o Scienza",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.22
+          }
+        ]
+      },
+      "Crystal Palace": {
+        "shirt_color": "Blue",
+        "short_color": "Red",
+        "players": [
+          {
+            "name": "D. Henderson",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.1
+          },
+          {
+            "name": "T. Mitchell",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.19
+          },
+          {
+            "name": "M. Gu\u00e9hi",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.16
+          },
+          {
+            "name": "M. Lacroix",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.25
+          },
+          {
+            "name": "D. Mu\u00f1oz",
+            "strength": 60,
+            "role": "RB",
+            "velocity": 1.19
+          },
+          {
+            "name": "Yeremy Pino",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "A. Wharton",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.13
+          },
+          {
+            "name": "D. Kamada",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "I. Sarr",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.27
+          },
+          {
+            "name": "J. Mateta",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "C. Uche",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          }
+        ]
+      }
+    }
+  }
+}

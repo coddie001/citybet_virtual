@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Bayern Munich",
+    "away_team": "Borussia M'gladbach",
+    "teams": {
+      "Bayern Munich": {
+        "shirt_color": "Red",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "M. Neuer",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "A. Davies",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.28
+          },
+          {
+            "name": "J. Tah",
+            "strength": 100,
+            "role": "CB",
+            "velocity": 1.14
+          },
+          {
+            "name": "D. Upamecano",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.2
+          },
+          {
+            "name": "J. Kimmich",
+            "strength": 100,
+            "role": "RB",
+            "velocity": 1.18
+          },
+          {
+            "name": "J. Musiala",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.21
+          },
+          {
+            "name": "R. Guerreiro",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "L. Goretzka",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.2
+          },
+          {
+            "name": "M. Olise",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.2
+          },
+          {
+            "name": "H. Kane",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.14
+          },
+          {
+            "name": "L. D\u00edaz",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.25
+          }
+        ]
+      },
+      "Borussia M'gladbach": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "J. Omlin",
+            "strength": 60,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "K. Diks",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 1.18
+          },
+          {
+            "name": "N. Elvedi",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.17
+          },
+          {
+            "name": "M. Friedrich",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.12
+          },
+          {
+            "name": "J. Scally",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 1.23
+          },
+          {
+            "name": "R. Hack",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.2
+          },
+          {
+            "name": "R. Reitz",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "K. St\u00f6ger",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.1
+          },
+          {
+            "name": "F. Honorat",
+            "strength": 60,
+            "role": "RM",
+            "velocity": 1.23
+          },
+          {
+            "name": "T. Kleindienst",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.16
+          },
+          {
+            "name": "S. Machino",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.23
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "Leganes",
+    "away_team": "Real Madrid",
+    "teams": {
+      "Leganes": {
+        "shirt_color": "Blue",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "Alisson",
+            "strength": 80,
+            "role": "GK",
+            "velocity": 1.01
+          },
+          {
+            "name": "Gvardiol",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.11
+          },
+          {
+            "name": "Schar",
+            "strength": 40,
+            "role": "CB",
+            "velocity": 1.0
+          },
+          {
+            "name": "Danilo",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 0.97
+          },
+          {
+            "name": "Udogie",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Musiala Jr",
+            "strength": 60,
+            "role": "LM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Casemiro",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.09
+          },
+          {
+            "name": "Goretzka",
+            "strength": 40,
+            "role": "CM",
+            "velocity": 1.06
+          },
+          {
+            "name": "Madison",
+            "strength": 40,
+            "role": "RM",
+            "velocity": 0.91
+          },
+          {
+            "name": "Leao",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.19
+          },
+          {
+            "name": "Palmer",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.07
+          }
+        ]
+      },
+      "Real Madrid": {
+        "shirt_color": "White",
+        "short_color": "White",
+        "players": [
+          {
+            "name": "T. Courtois",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.07
+          },
+          {
+            "name": "E. Camavinga",
+            "strength": 80,
+            "role": "LB",
+            "velocity": 1.21
+          },
+          {
+            "name": "A. R\u00fcdiger",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.21
+          },
+          {
+            "name": "\u00c9der Milit\u00e3o",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "F. Valverde",
+            "strength": 100,
+            "role": "RB",
+            "velocity": 1.25
+          },
+          {
+            "name": "K. Mbapp\u00e9",
+            "strength": 100,
+            "role": "LM",
+            "velocity": 1.29
+          },
+          {
+            "name": "J. Bellingham",
+            "strength": 100,
+            "role": "CM",
+            "velocity": 1.21
+          },
+          {
+            "name": "A. Tchouam\u00e9ni",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.17
+          },
+          {
+            "name": "Rodrygo",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Vini Jr.",
+            "strength": 100,
+            "role": "ST",
+            "velocity": 1.28
+          },
+          {
+            "name": "Endrick",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.24
+          }
+        ]
+      }
+    }
+  }
+}

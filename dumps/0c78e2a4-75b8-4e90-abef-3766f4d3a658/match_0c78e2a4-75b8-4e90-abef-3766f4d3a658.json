@@ -1,0 +1,152 @@
+{
+  "match_setup": {
+    "home_team": "AC Milan",
+    "away_team": "Venezia",
+    "teams": {
+      "AC Milan": {
+        "shirt_color": "Red",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Mike Peterson Maignan",
+            "strength": 100,
+            "role": "GK",
+            "velocity": 1.12
+          },
+          {
+            "name": "Pervis Josu\u00e9 Estupi\u00f1\u00e1n Tenorio",
+            "strength": 60,
+            "role": "LB",
+            "velocity": 1.2
+          },
+          {
+            "name": "Oluwafikayomi Oluwadamilola Tomori",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Matteo Gabbia",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 1.07
+          },
+          {
+            "name": "Adrien Rabiot-Provost",
+            "strength": 80,
+            "role": "RB",
+            "velocity": 1.22
+          },
+          {
+            "name": "Rafael Alexandre da Concei\u00e7\u00e3o Le\u00e3o",
+            "strength": 80,
+            "role": "LM",
+            "velocity": 1.27
+          },
+          {
+            "name": "Luka Modri\u0107",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Youssouf Fofana",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.16
+          },
+          {
+            "name": "Christian Mate Puli\u0161i\u0107",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 1.25
+          },
+          {
+            "name": "Christopher Alan Nkunku",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.2
+          },
+          {
+            "name": "Santiago Tom\u00e1s Gim\u00e9nez",
+            "strength": 60,
+            "role": "ST",
+            "velocity": 1.21
+          }
+        ]
+      },
+      "Venezia": {
+        "shirt_color": "Black",
+        "short_color": "Black",
+        "players": [
+          {
+            "name": "Ter Stegen",
+            "strength": 40,
+            "role": "GK",
+            "velocity": 1.08
+          },
+          {
+            "name": "Udogie",
+            "strength": 40,
+            "role": "LB",
+            "velocity": 0.98
+          },
+          {
+            "name": "Pavard",
+            "strength": 80,
+            "role": "CB",
+            "velocity": 1.06
+          },
+          {
+            "name": "Tapsoba",
+            "strength": 60,
+            "role": "CB",
+            "velocity": 0.97
+          },
+          {
+            "name": "Martinez",
+            "strength": 40,
+            "role": "RB",
+            "velocity": 0.92
+          },
+          {
+            "name": "Gallagher",
+            "strength": 40,
+            "role": "LM",
+            "velocity": 1.12
+          },
+          {
+            "name": "Calhanoglu",
+            "strength": 80,
+            "role": "CM",
+            "velocity": 1.04
+          },
+          {
+            "name": "Bentancur",
+            "strength": 60,
+            "role": "CM",
+            "velocity": 1.11
+          },
+          {
+            "name": "Partey",
+            "strength": 80,
+            "role": "RM",
+            "velocity": 0.99
+          },
+          {
+            "name": "Rashford",
+            "strength": 80,
+            "role": "ST",
+            "velocity": 1.11
+          },
+          {
+            "name": "Leao",
+            "strength": 40,
+            "role": "ST",
+            "velocity": 1.2
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { LeagueId, LiveMatch } from '../../types'
 import { LIVE_DRAWER_WIDTH } from './liveDrawerLayout'
 import { LiveMatchPanel } from './LiveMatchPanel'
@@ -21,17 +21,36 @@ export function LiveDrawer({
   onMatchEnded,
 }: LiveDrawerProps) {
   const [index, setIndex] = useState(0)
+  const userNavigatedRef = useRef(false)
 
   useEffect(() => {
+    userNavigatedRef.current = false
+  }, [focusMatchId])
+
+  useEffect(() => {
+    if (userNavigatedRef.current) return
     if (focusMatchId) {
       const idx = matches.findIndex((m) => m.id === focusMatchId)
       if (idx >= 0) setIndex(idx)
       return
     }
-    if (!focusLeague || focusLeague === 'ALL') return
-    const idx = matches.findIndex((m) => m.league === focusLeague)
-    if (idx >= 0) setIndex(idx)
-  }, [focusLeague, focusMatchId, matches])
+    if (focusLeague && focusLeague !== 'ALL') {
+      const idx = matches.findIndex((m) => m.league === focusLeague)
+      if (idx >= 0) setIndex(idx)
+    }
+  }, [focusMatchId, focusLeague, matches])
+
+  useEffect(() => {
+    setIndex((i) => {
+      if (matches.length === 0) return 0
+      return Math.min(Math.max(0, i), matches.length - 1)
+    })
+  }, [matches.length])
+
+  const handleIndexChange = (next: number) => {
+    userNavigatedRef.current = true
+    setIndex(next)
+  }
 
   return (
     <>
@@ -87,7 +106,7 @@ export function LiveDrawer({
           <LiveMatchPanel
             matches={matches}
             matchIndex={index}
-            onMatchIndexChange={setIndex}
+            onMatchIndexChange={handleIndexChange}
             onMatchEnded={onMatchEnded}
           />
         </div>

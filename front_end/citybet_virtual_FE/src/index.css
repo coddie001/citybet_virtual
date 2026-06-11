@@ -82,9 +82,16 @@
     to { opacity: 1; }
   }
 
+  /* Prefer pitch centre — reduces reliance on burned-in lower-third overlays */
+  .live-video-clean video {
+    object-fit: contain;
+    object-position: center 42%;
+  }
+
   @media (min-width: 1024px) {
     .live-video-frame {
-      min-height: 420px;
+      min-height: 280px;
+      aspect-ratio: 16 / 9;
     }
   }
 

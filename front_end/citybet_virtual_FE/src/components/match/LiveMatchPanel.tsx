@@ -1,5 +1,6 @@
-import { isBroadcastOnAir } from '../../utils/liveVideo'
+import { isBroadcastOnAir, isFallbackBroadcast } from '../../utils/liveVideo'
 import type { LiveMatch } from '../../types'
+import { LiveMatchCarousel } from './LiveMatchCarousel'
 import { LiveVideoTile } from './LiveVideoTile'
 
 interface LiveMatchPanelProps {
@@ -30,48 +31,27 @@ export function LiveMatchPanel({
   const safeIndex =
     matchIndex >= 0 && matchIndex < displayMatches.length ? matchIndex : 0
   const match = displayMatches[safeIndex] ?? displayMatches[0]
-  const canNavigate = displayMatches.length > 1
+
+  // Check if all displayed matches are replays (no genuine live broadcast)
+  const allFallback = displayMatches.every((m) => isFallbackBroadcast(m))
 
   return (
-    <div className="flex h-full min-h-0 flex-col p-3 sm:p-4">
-      {canNavigate && (
-        <div className="mb-3 flex shrink-0 items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() =>
-              onMatchIndexChange((safeIndex - 1 + displayMatches.length) % displayMatches.length)
-            }
-            className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
-            aria-label="Previous match"
-          >
-            ‹
-          </button>
-          <div className="flex gap-1.5">
-            {displayMatches.map((m, i) => (
-              <button
-                key={m.id}
-                type="button"
-                onClick={() => onMatchIndexChange(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === safeIndex ? 'w-6 bg-brand' : 'w-1.5 bg-white/20'
-                }`}
-                aria-label={`Match ${i + 1}`}
-              />
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={() =>
-              onMatchIndexChange((safeIndex + 1) % displayMatches.length)
-            }
-            className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-white/60 transition hover:bg-white/5 hover:text-white"
-            aria-label="Next match"
-          >
-            ›
-          </button>
+    <div className="flex h-full min-h-0 flex-col gap-3 p-3 sm:p-4">
+      {allFallback && (
+        <div className="flex shrink-0 items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2">
+          <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />
+          <p className="text-[11px] font-medium text-amber-300">
+            Live stream returning shortly — playing match replays
+          </p>
         </div>
       )}
-      <LiveVideoTile match={match} onEnded={onMatchEnded} expanded />
+      <LiveMatchCarousel
+        matches={displayMatches}
+        activeIndex={safeIndex}
+        onIndexChange={onMatchIndexChange}
+      />
+      <LiveVideoTile key={match.id} match={match} onEnded={onMatchEnded} expanded />
     </div>
   )
 }
+

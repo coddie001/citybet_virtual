@@ -56,10 +56,14 @@ app.add_middleware(
 
 FIXTURE_IMG_DIR = PROJECT_ROOT / "front_end" / "static" / "img" / "fixture_imgs"
 TEAM_FIX_IMG_DIR = PROJECT_ROOT / "front_end" / "static" / "img" / "team_fix_imgs"
+# FE assets (logo, etc.) served at /static/img via proxy
+FE_STATIC_IMG_DIR = PROJECT_ROOT / "front_end" / "citybet_virtual_FE" / "static" / "img"
 from utils.video_paths import VIDEO_DIR
 
 VIDEO_DIR.mkdir(parents=True, exist_ok=True)
 
+if FE_STATIC_IMG_DIR.is_dir():
+    app.mount("/static/img", StaticFiles(directory=str(FE_STATIC_IMG_DIR)), name="fe-static-img")
 if FIXTURE_IMG_DIR.is_dir():
     app.mount("/static/fixture-imgs", StaticFiles(directory=str(FIXTURE_IMG_DIR)), name="fixture-imgs")
 if TEAM_FIX_IMG_DIR.is_dir():
@@ -235,12 +239,17 @@ def list_fixtures(
     fixtures = q.order_by(Fixture.show_at_ms.asc()).offset(offset).limit(limit).all()
 
     from utils.virtual_schedule import effective_fixture_status
+    from utils.match_sync import build_match_sync_payload
 
     result = []
     for f in fixtures:
         home = db.query(Team).filter(Team.team_id == f.home_team_id).first()
         away = db.query(Team).filter(Team.team_id == f.away_team_id).first()
         dump = db.query(GfrDump).filter(GfrDump.match_id == f.match_id).first()
+        eff_status = effective_fixture_status(f, dump)
+        match_sync = None
+        if dump and dump.gfr_stats and eff_status in ("live", "preparing"):
+            match_sync = build_match_sync_payload(f.match_id, dump.gfr_stats)
         result.append({
             "match_id": str(f.match_id),
             "season_id": str(f.season_id),
@@ -248,7 +257,7 @@ def list_fixtures(
             "game_date": str(f.game_date),
             "game_time": str(f.game_time),
             "show_at_ms": int(f.show_at_ms or 0),
-            "status": effective_fixture_status(f, dump),
+            "status": eff_status,
             "settled": f.settled,
             "score": f.score,
             "fixture_image_url": f.fixture_image_url,
@@ -257,8 +266,23 @@ def list_fixtures(
             "predictions": f.predictions,
             "outcome": f.outcome,
             "has_video": match_has_video(dump, f.match_id),
+            "match_sync": match_sync,
         })
+        pred = dict(f.predictions or {})
+        sched = pred.get("_scheduled_start_at")
+        result[-1]["scheduled_start_at_ms"] = int(float(sched) * 1000) if sched else None
+
     return {"total": total, "fixtures": result}
+
+
+@app.get("/carousel", tags=["Carousel"])
+def get_carousel(db: Session = Depends(get_db)):
+    """Backend-driven carousel queue — ordered by scheduled wall-clock start."""
+    from utils.carousel_schedule import build_carousel_response, use_wall_clock_schedule
+
+    if not use_wall_clock_schedule():
+        return {"mode": "legacy", "server_time_ms": int(__import__("time").time() * 1000), "items": [], "total": 0}
+    return build_carousel_response(db)
 
 
 @app.get("/fixtures/{match_id}", tags=["Fixtures"])
@@ -338,6 +362,28 @@ def top_scorers(
     }
 
 
+def _get_oldest_completed_fixtures_with_video(db: Session, season_id: uuid.UUID, limit: int = 5):
+    from utils.virtual_schedule import match_has_video
+    fixtures = (
+        db.query(Fixture)
+        .join(GfrDump, Fixture.match_id == GfrDump.match_id)
+        .filter(
+            Fixture.season_id == season_id,
+            Fixture.status == "completed"
+        )
+        .order_by(Fixture.show_at_ms.asc())
+        .all()
+    )
+    res = []
+    for f in fixtures:
+        dump = db.query(GfrDump).filter(GfrDump.match_id == f.match_id).first()
+        if match_has_video(dump, f.match_id):
+            res.append(f)
+            if len(res) >= limit:
+                break
+    return res
+
+
 @app.get("/live/now", tags=["Live"])
 def live_now(
     season_id: str = Query(...),
@@ -350,12 +396,17 @@ def live_now(
 
     fixture, clock, source = resolve_live_fixture(db, season.season_id, virtual_ms)
     if not fixture:
-        return {
-            "season_id": str(season.season_id),
-            "virtual_clock_ms": clock,
-            "source": source,
-            "fixture": None,
-        }
+        fallbacks = _get_oldest_completed_fixtures_with_video(db, season.season_id, limit=1)
+        if fallbacks:
+            fixture = fallbacks[0]
+            source = "virtual_replay"
+        else:
+            return {
+                "season_id": str(season.season_id),
+                "virtual_clock_ms": clock,
+                "source": source,
+                "fixture": None,
+            }
     return {
         "season_id": str(season.season_id),
         "virtual_clock_ms": clock,
@@ -369,20 +420,48 @@ def live_all_leagues(
     virtual_ms: Optional[int] = Query(None),
     db: Session = Depends(get_db),
 ):
+    """
+    Carousel/landing-page polling endpoint — called every 5 s by the frontend.
+    match_sync is intentionally omitted (it runs ffprobe which is expensive);
+    fetch /live/now or /fixtures/{id} for the full sync payload when playing a video.
+    """
     seasons = db.query(Season).filter(Season.season_status == "active").all()
     cards = []
     for season in seasons:
         fixture, clock, source = resolve_live_fixture(db, season.season_id, virtual_ms)
         league_name = " ".join(season.tournament_name.split()[:-1])
         countdown = build_countdown_state(db, season.season_id, clock)
-        cards.append({
-            "league_name": league_name,
-            "season_id": str(season.season_id),
-            "virtual_clock_ms": clock,
-            "source": source,
-            "fixture": serialize_fixture_card(db, fixture, clock) if fixture else None,
-            "countdown": countdown,
-        })
+        if fixture:
+            cards.append({
+                "league_name": league_name,
+                "season_id": str(season.season_id),
+                "virtual_clock_ms": clock,
+                "source": source,
+                # skip_match_sync: avoid ffprobe on every poll cycle
+                "fixture": serialize_fixture_card(db, fixture, clock, skip_match_sync=True),
+                "countdown": countdown,
+            })
+        else:
+            fallbacks = _get_oldest_completed_fixtures_with_video(db, season.season_id, limit=5)
+            if fallbacks:
+                for f in fallbacks:
+                    cards.append({
+                        "league_name": league_name,
+                        "season_id": str(season.season_id),
+                        "virtual_clock_ms": clock,
+                        "source": "virtual_replay",
+                        "fixture": serialize_fixture_card(db, f, clock, skip_match_sync=True),
+                        "countdown": countdown,
+                    })
+            else:
+                cards.append({
+                    "league_name": league_name,
+                    "season_id": str(season.season_id),
+                    "virtual_clock_ms": clock,
+                    "source": "none",
+                    "fixture": None,
+                    "countdown": countdown,
+                })
     return cards
 
 

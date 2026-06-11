@@ -59,12 +59,14 @@ export function useVideoSyncedMatchState(
   match: LiveMatch | null | undefined,
   currentTimeSec: number,
   videoEnded = false,
+  liveDurationSec = 0,
 ): SyncedMatchState {
   return useMemo(() => {
     if (!match) return NEUTRAL
 
     const sync = match.matchSync
-    const duration = sync?.videoDurationSec ?? 0
+    const duration =
+      liveDurationSec > 0 ? liveDurationSec : (sync?.videoDurationSec ?? 0)
     const atFullTime =
       videoEnded || (duration > 0 && currentTimeSec >= duration - 0.25)
 
@@ -95,5 +97,5 @@ export function useVideoSyncedMatchState(
       corners: [lerp(0, final.cornersHome, t), lerp(0, final.cornersAway, t)],
       isAtFullTime: false,
     }
-  }, [match, currentTimeSec, videoEnded])
+  }, [match, currentTimeSec, videoEnded, liveDurationSec])
 }

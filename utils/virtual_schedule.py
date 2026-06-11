@@ -153,6 +153,8 @@ def resolve_live_fixture(
 
     clock = virtual_clock_ms(season, db, virtual_ms)
 
+    from utils.carousel_schedule import use_wall_clock_schedule
+
     live = (
         db.query(Fixture)
         .filter(Fixture.season_id == season_id, Fixture.status == "live")
@@ -163,6 +165,9 @@ def resolve_live_fixture(
         dump = db.query(GfrDump).filter(GfrDump.match_id == live.match_id).first()
         if match_has_video(dump, live.match_id):
             return live, clock, "live_status"
+
+    if use_wall_clock_schedule():
+        return None, clock, "none"
 
     scheduled, source = broadcast_fixture_at_clock(db, season_id, clock)
     if scheduled:
@@ -192,7 +197,7 @@ def fixture_progress_gameweek(db: Session, season_id: uuid.UUID) -> Optional[int
         db.query(func.min(Fixture.gameweek))
         .filter(
             Fixture.season_id == season_id,
-            Fixture.status.in_(("upcoming", "live")),
+            Fixture.status.in_(("upcoming", "preparing", "live")),
             Fixture.gameweek >= floor_gw,
         )
         .scalar()
@@ -285,6 +290,35 @@ def _kickoff_or_grace_fixture(
 
 
 def build_countdown_state(db: Session, season_id: uuid.UUID, virtual_ms: int) -> Optional[dict]:
+    from utils.carousel_schedule import countdown_for_scheduled, use_wall_clock_schedule
+
+    if use_wall_clock_schedule():
+        candidates = (
+            db.query(Fixture)
+            .filter(
+                Fixture.season_id == season_id,
+                Fixture.status.in_(("preparing", "live")),
+            )
+            .all()
+        )
+        best = None
+        best_start = None
+        for f in candidates:
+            pred = dict(f.predictions or {})
+            raw = pred.get("_scheduled_start_at")
+            if raw is None:
+                continue
+            try:
+                start = float(raw)
+            except (TypeError, ValueError):
+                continue
+            if best_start is None or start < best_start:
+                best_start = start
+                best = f
+        if best:
+            return countdown_for_scheduled(best)
+        return None
+
     gwk = fixture_progress_gameweek(db, season_id) or 1
     nxt = (
         db.query(Fixture)
@@ -330,7 +364,13 @@ def _countdown_for_fixture(fixture: Fixture, virtual_ms: int) -> dict:
     }
 
 
-def serialize_fixture_card(db: Session, fixture: Fixture, virtual_ms: int) -> dict:
+def serialize_fixture_card(
+    db: Session,
+    fixture: Fixture,
+    virtual_ms: int,
+    *,
+    skip_match_sync: bool = False,
+) -> dict:
     home = db.query(Team).filter(Team.team_id == fixture.home_team_id).first()
     away = db.query(Team).filter(Team.team_id == fixture.away_team_id).first()
     dump = db.query(GfrDump).filter(GfrDump.match_id == fixture.match_id).first()
@@ -345,8 +385,12 @@ def serialize_fixture_card(db: Session, fixture: Fixture, virtual_ms: int) -> di
         .scalar()
     )
     match_sync = None
-    if dump and dump.gfr_stats:
+    if not skip_match_sync and dump and dump.gfr_stats:
         match_sync = build_match_sync_payload(fixture.match_id, dump.gfr_stats)
+
+    pred = dict(fixture.predictions or {})
+    sched_raw = pred.get("_scheduled_start_at")
+    scheduled_start_at_ms = int(float(sched_raw) * 1000) if sched_raw is not None else None
 
     return {
         "match_id": str(fixture.match_id),
@@ -362,5 +406,6 @@ def serialize_fixture_card(db: Session, fixture: Fixture, virtual_ms: int) -> di
         "away_team": {"id": str(away.team_id), "name": away.team_name} if away else None,
         "has_video": match_has_video(dump, fixture.match_id),
         "video_endpoint": f"/video/{fixture.match_id}",
+        "scheduled_start_at_ms": scheduled_start_at_ms,
         "match_sync": match_sync,
     }

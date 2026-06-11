@@ -19,8 +19,10 @@ import {
 import type { ApiLiveCard } from '../api/types'
 import {
   isKnownLeague,
+  mapCarouselItem,
   mapFixture,
   mapFixtureCard,
+  mapFixtureToLiveMatch,
   mapLeague,
   mapLiveCard,
   mergeLiveFromFixtures,
@@ -113,13 +115,14 @@ async function loadDetailsForLeagues(mappedLeagues: LeagueMeta[]) {
     mappedLeagues.map(async (league) => {
       const key = league.id as LeagueKey
       const minGw = league.gameweek
-      const [fxUpcoming, fxLive, res, tbl, top] = await Promise.all([
+      const [fxUpcoming, fxPreparing, fxLive, res, tbl, top] = await Promise.all([
         api.fixtures({
           seasonId: league.seasonId,
           status: 'upcoming',
           minGameweek: minGw,
           limit: FIXTURES_LIMIT,
         }),
+        api.fixtures({ seasonId: league.seasonId, status: 'preparing', limit: 12 }),
         api.fixtures({ seasonId: league.seasonId, status: 'live', limit: 8 }),
         api.results({ seasonId: league.seasonId, limit: RESULTS_LIMIT }),
         api.table(league.seasonId),
@@ -127,7 +130,7 @@ async function loadDetailsForLeagues(mappedLeagues: LeagueMeta[]) {
       ])
 
       const seen = new Set<string>()
-      for (const f of [...fxLive.fixtures, ...fxUpcoming.fixtures]) {
+      for (const f of [...fxLive.fixtures, ...fxPreparing.fixtures, ...fxUpcoming.fixtures]) {
         if (seen.has(f.match_id)) continue
         seen.add(f.match_id)
         fixturesAcc.push(mapFixture(f, key))
@@ -139,6 +142,33 @@ async function loadDetailsForLeagues(mappedLeagues: LeagueMeta[]) {
   )
 
   return { fixturesAcc, resultsAcc, tablesAcc, scorersAcc }
+}
+
+/** All on-air broadcasts globally — supports multiple live streams at once. */
+async function loadGlobalLiveBroadcasts(mappedLeagues: LeagueMeta[]): Promise<LiveMatch[]> {
+  const seasonToLeague = Object.fromEntries(
+    mappedLeagues.map((l) => [l.seasonId, l.id as LeagueKey]),
+  )
+  try {
+    const res = await api.fixtures({ status: 'live', limit: 32 })
+    const matches: LiveMatch[] = []
+    for (const f of res.fixtures) {
+      const league = seasonToLeague[f.season_id]
+      if (!league || !isKnownLeague(league)) continue
+      const mapped = mapFixtureToLiveMatch(mapFixture(f, league))
+      if (mapped) matches.push(mapped)
+    }
+    return matches
+  } catch {
+    return []
+  }
+}
+
+function sortLiveBroadcasts(matches: LiveMatch[]): LiveMatch[] {
+  return [...matches].sort(
+    (a, b) =>
+      (a.scheduledStartAtMs ?? a.showAtMs ?? 0) - (b.scheduledStartAtMs ?? b.showAtMs ?? 0),
+  )
 }
 
 function pinCountdownCarouselCards(
@@ -180,27 +210,39 @@ function pinCountdownCarouselCards(
   return acc
 }
 
-/** Carousel queue: upcoming + live fixtures (upcoming → live → completed lifecycle). */
+/** Carousel queue — backend `/carousel` (wall-clock) with legacy per-league fallback. */
 async function loadCarouselQueue(
   mappedLeagues: LeagueMeta[],
   liveCards: ApiLiveCard[] = [],
 ) {
+  try {
+    const res = await api.carousel()
+    if (res.mode === 'wall_clock') {
+      return res.items
+        .map(mapCarouselItem)
+        .filter((m): m is UpcomingMatch => m !== null)
+    }
+  } catch {
+    // fall through to legacy loader
+  }
+
   const acc: UpcomingMatch[] = []
   await Promise.all(
     mappedLeagues.map(async (league) => {
       const key = league.id as LeagueKey
       const minGw = league.gameweek
-      const [fxUpcoming, fxLive] = await Promise.all([
+      const [fxUpcoming, fxPreparing, fxLive] = await Promise.all([
         api.fixtures({
           seasonId: league.seasonId,
           status: 'upcoming',
           minGameweek: minGw,
           limit: CAROUSEL_LIMIT,
         }),
+        api.fixtures({ seasonId: league.seasonId, status: 'preparing', limit: 8 }),
         api.fixtures({ seasonId: league.seasonId, status: 'live', limit: 4 }),
       ])
       const seen = new Set<string>()
-      for (const f of [...fxLive.fixtures, ...fxUpcoming.fixtures]) {
+      for (const f of [...fxLive.fixtures, ...fxPreparing.fixtures, ...fxUpcoming.fixtures]) {
         if (seen.has(f.match_id)) continue
         seen.add(f.match_id)
         acc.push(mapUpcoming(f, key))
@@ -256,9 +298,12 @@ export function PlatformDataProvider({ children }: { children: ReactNode }) {
       setError(null)
 
       const details = await loadDetailsForLeagues(mappedLeagues)
-      const live = mergeLiveFromFixtures(
-        liveCards.map(mapLiveCard).filter((m): m is LiveMatch => m !== null),
-        details.fixturesAcc,
+      const globalLive = await loadGlobalLiveBroadcasts(mappedLeagues)
+      const live = sortLiveBroadcasts(
+        mergeLiveFromFixtures(
+          [...globalLive, ...liveCards.map(mapLiveCard).filter((m): m is LiveMatch => m !== null)],
+          details.fixturesAcc,
+        ),
       )
 
       setLiveMatches(live)
@@ -329,18 +374,22 @@ export function PlatformDataProvider({ children }: { children: ReactNode }) {
         return
       }
 
-      const [refreshed, details] = await Promise.all([
+      const [refreshed, details, globalLive] = await Promise.all([
         loadCarouselQueue(activeLeagues, liveCards),
         loadDetailsForLeagues(activeLeagues),
+        loadGlobalLiveBroadcasts(activeLeagues),
       ])
 
-      const live = mergeLiveFromFixtures(liveFromCards, details.fixturesAcc)
+      const live = sortLiveBroadcasts(
+        mergeLiveFromFixtures([...globalLive, ...liveFromCards], details.fixturesAcc),
+      )
       setVirtualClockMs(clock)
       setCountdownByLeague(parseCountdowns(liveCards))
       setClocksByLeague(parseClocksFromLiveCards(liveCards))
       setLiveMatches(live)
 
       setUpcoming(refreshed)
+      setCarouselReady(true)
       setFixtures(details.fixturesAcc)
       setResults(details.resultsAcc)
       setTables(details.tablesAcc)

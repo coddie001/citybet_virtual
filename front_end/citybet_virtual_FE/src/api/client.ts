@@ -3,6 +3,7 @@
  */
 
 import type {
+  ApiCarouselResponse,
   ApiCountdown,
   ApiFixture,
   ApiLeague,
@@ -14,8 +15,10 @@ import type {
 } from './types'
 
 const BASE = '/api'
-/** Single poll cadence — carousel, table, fixtures, results, stats. */
+/** Platform data poll — carousel, table, fixtures, results, stats. */
 export const LIVE_POLL_INTERVAL_MS = 5_000
+/** Silent video pane refresh — reload stream without disrupting playback position. */
+export const VIDEO_PANE_REFRESH_MS = 30_000
 import {
   COUNTDOWN_WINDOW_MS,
   FIXTURE_INTERVAL_MS,
@@ -243,6 +246,8 @@ export const api = {
       }
     )
   },
+
+  carousel: (): Promise<ApiCarouselResponse> => get<ApiCarouselResponse>('/carousel'),
 
   liveAll: async (): Promise<ApiLiveCard[]> => {
     const direct = await getOptional<ApiLiveCard[]>('/live/all')

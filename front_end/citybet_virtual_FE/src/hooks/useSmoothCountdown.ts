@@ -6,8 +6,7 @@ const WINDOW_MS = COUNTDOWN_WINDOW_MS
 
 /**
  * Smooth 1-second countdown anchored to API ms_until_kickoff.
- * Once the window opens, local deadline ticks through 03:00→00:00 even if
- * poll responses briefly drop in_countdown_window (5s live poll).
+ * Wall-clock mode (countdown_real_ms) supports full preparing countdown beyond 3 min.
  */
 export function useSmoothCountdown(countdown: ApiCountdown | null | undefined) {
   const anchorRef = useRef({ matchId: '', deadline: 0 })
@@ -34,8 +33,10 @@ export function useSmoothCountdown(countdown: ApiCountdown | null | undefined) {
     const realUntil = countdown?.countdown_real_ms
       ? ms_until_kickoff
       : virtualMsToRealMs(ms_until_kickoff)
-    const apiInWindow =
-      in_countdown_window && ms_until_kickoff > 0 && ms_until_kickoff <= WINDOW_MS
+    const wallClock = Boolean(countdown?.countdown_real_ms)
+    const apiInWindow = wallClock
+      ? in_countdown_window && ms_until_kickoff > 0
+      : in_countdown_window && ms_until_kickoff > 0 && ms_until_kickoff <= WINDOW_MS
     const anchorActive =
       anchorRef.current.deadline > now &&
       anchorRef.current.matchId === next_match_id
@@ -66,12 +67,12 @@ export function useSmoothCountdown(countdown: ApiCountdown | null | undefined) {
     countdown?.countdown_real_ms,
   ])
 
+  const wallClock = Boolean(countdown?.countdown_real_ms)
   const inWindow =
     Boolean(countdown?.in_countdown_window) &&
     remainingMs > 0 &&
-    remainingMs <= WINDOW_MS &&
-    !countdown?.is_kickoff
-  // Trust backend kickoff flag only — local wasInWindow caused sticky LIVE badges
+    !countdown?.is_kickoff &&
+    (wallClock || remainingMs <= WINDOW_MS)
   const isKickoff = Boolean(countdown?.is_kickoff)
 
   const totalSec = inWindow ? Math.max(0, Math.floor((remainingMs + 999) / 1000)) : 0

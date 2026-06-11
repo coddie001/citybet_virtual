@@ -1,3 +1,5 @@
+import type { ApiCountdown } from '../api/types'
+
 export type LeagueId = 'ALL' | 'Premier League' | 'La Liga' | 'Serie A' | 'Bundesliga'
 
 export type TabId = 'table' | 'fixtures' | 'results' | 'stats'
@@ -25,6 +27,11 @@ export interface UpcomingMatch {
   status: 'upcoming' | 'preparing' | 'live' | 'completed'
   hasVideo?: boolean
   isNext?: boolean
+  /** Backend carousel identity and ordering. */
+  carouselId?: string
+  carouselStep?: number
+  scheduledStartAtMs?: number
+  countdown?: ApiCountdown
 }
 
 export interface TableRow {
@@ -52,6 +59,8 @@ export interface FixtureItem {
   imageUrl?: string
   hasVideo?: boolean
   showAtMs?: number
+  scheduledStartAtMs?: number
+  matchSync?: MatchSyncPayload
 }
 
 export interface ResultItem {
@@ -114,9 +123,12 @@ export interface LiveMatch {
   status: 'live' | 'completed'
   showAtMs?: number
   virtualClockMs?: number
+  scheduledStartAtMs?: number
   hasVideo?: boolean
   source?: string
   isOnAir?: boolean
+  /** True when this is a replay match shown because no live broadcast is available. */
+  isFallback?: boolean
   possession: [number, number]
   shots: [number, number]
   fouls: [number, number]

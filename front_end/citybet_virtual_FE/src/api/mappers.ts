@@ -1,4 +1,5 @@
 import type {
+  ApiCarouselItem,
   ApiFixture,
   ApiFixtureCard,
   ApiLeague,
@@ -95,6 +96,29 @@ export function mapFixtureCard(
   }
 }
 
+export function mapCarouselItem(item: ApiCarouselItem): UpcomingMatch | null {
+  if (!item.home_team || !item.away_team || !isKnownLeague(item.league_name)) return null
+  const hasVideo = item.has_video === true
+  return {
+    id: item.match_id,
+    carouselId: item.carousel_id,
+    carouselStep: item.carousel_step,
+    scheduledStartAtMs: item.scheduled_start_at_ms ?? undefined,
+    league: item.league_name,
+    home: item.home_team.name,
+    homeAbbr: teamAbbr(item.home_team.name),
+    away: item.away_team.name,
+    awayAbbr: teamAbbr(item.away_team.name),
+    imageUrl: resolveImageUrl(item.fixture_image_url),
+    showAtMs: item.scheduled_start_at_ms ?? item.show_at_ms,
+    gameweek: item.gameweek,
+    status: mapFixtureStatus(item.status, hasVideo),
+    hasVideo,
+    isNext: item.is_next === true,
+    countdown: item.countdown,
+  }
+}
+
 export function mapUpcoming(f: ApiFixture, league: Exclude<LeagueId, 'ALL'>): UpcomingMatch {
   const hasVideo = f.has_video === true
   const status = mapFixtureStatus(f.status, hasVideo)
@@ -115,6 +139,11 @@ export function mapUpcoming(f: ApiFixture, league: Exclude<LeagueId, 'ALL'>): Up
 
 export function mapFixture(f: ApiFixture, league: Exclude<LeagueId, 'ALL'>): FixtureItem {
   const hasVideo = f.has_video === true
+  const pred = f.predictions as Record<string, unknown> | undefined
+  const schedRaw = pred?._scheduled_start_at
+  const scheduledStartAtMs =
+    f.scheduled_start_at_ms ??
+    (schedRaw != null ? Math.round(Number(schedRaw) * 1000) : undefined)
   return {
     id: f.match_id,
     league,
@@ -127,6 +156,8 @@ export function mapFixture(f: ApiFixture, league: Exclude<LeagueId, 'ALL'>): Fix
     imageUrl: resolveImageUrl(f.fixture_image_url),
     hasVideo,
     showAtMs: f.show_at_ms,
+    scheduledStartAtMs,
+    matchSync: mapMatchSync(f.match_sync),
   }
 }
 
@@ -201,22 +232,31 @@ function mapMatchSync(sync: ApiMatchSyncPayload | null | undefined): MatchSyncPa
 /** Live stream row from a fixtures-API row (DB status is source of truth). */
 export function mapFixtureToLiveMatch(f: FixtureItem): LiveMatch | null {
   if (f.status !== 'live' || f.hasVideo !== true) return null
+  const sync = f.matchSync
+  const final = sync?.finalStats
+  const [homeScore, awayScore] = sync
+    ? [sync.finalStats.homeGoals, sync.finalStats.awayGoals]
+    : [0, 0]
   return {
     id: f.id,
     league: f.league,
     home: f.home,
     away: f.away,
-    homeScore: 0,
-    awayScore: 0,
+    homeScore,
+    awayScore,
     status: 'live',
     source: 'live_status',
     isOnAir: true,
     hasVideo: true,
     showAtMs: f.showAtMs,
-    possession: [50, 50],
-    shots: [0, 0],
-    fouls: [0, 0],
-    corners: [0, 0],
+    scheduledStartAtMs: f.scheduledStartAtMs,
+    possession: final
+      ? [Math.round(final.possession.homePct), Math.round(final.possession.awayPct)]
+      : [50, 50],
+    shots: final ? [final.shotsHome, final.shotsAway] : [0, 0],
+    fouls: final ? [final.foulsHome, final.foulsAway] : [0, 0],
+    corners: final ? [final.cornersHome, final.cornersAway] : [0, 0],
+    matchSync: sync,
   }
 }
 
@@ -228,6 +268,8 @@ export function mergeLiveFromFixtures(
   for (const f of fixtures) {
     if (f.status !== 'live' || f.hasVideo !== true) continue
     const existing = byId.get(f.id)
+    const sync = existing?.matchSync ?? f.matchSync
+    const final = sync?.finalStats
     if (existing) {
       byId.set(f.id, {
         ...existing,
@@ -235,15 +277,18 @@ export function mergeLiveFromFixtures(
         away: f.away,
         league: f.league,
         showAtMs: f.showAtMs ?? existing.showAtMs,
+        scheduledStartAtMs: f.scheduledStartAtMs ?? existing.scheduledStartAtMs,
         hasVideo: true,
         isOnAir: true,
-        matchSync: existing.matchSync,
-        homeScore: existing.homeScore,
-        awayScore: existing.awayScore,
-        possession: existing.possession,
-        shots: existing.shots,
-        fouls: existing.fouls,
-        corners: existing.corners,
+        matchSync: sync,
+        homeScore: final?.homeGoals ?? existing.homeScore,
+        awayScore: final?.awayGoals ?? existing.awayScore,
+        possession: final
+          ? [Math.round(final.possession.homePct), Math.round(final.possession.awayPct)]
+          : existing.possession,
+        shots: final ? [final.shotsHome, final.shotsAway] : existing.shots,
+        fouls: final ? [final.foulsHome, final.foulsAway] : existing.fouls,
+        corners: final ? [final.cornersHome, final.cornersAway] : existing.corners,
       })
     } else {
       const mapped = mapFixtureToLiveMatch(f)
@@ -252,6 +297,8 @@ export function mergeLiveFromFixtures(
   }
   return [...byId.values()]
 }
+
+const REPLAY_SOURCES = new Set(['virtual_replay', 'virtual_completed', 'latest_completed'])
 
 export function mapLiveCard(card: ApiLiveCard): LiveMatch | null {
   const fixture = card.fixture
@@ -262,9 +309,11 @@ export function mapLiveCard(card: ApiLiveCard): LiveMatch | null {
   const [homeScore, awayScore] = matchSync
     ? [matchSync.finalStats.homeGoals, matchSync.finalStats.awayGoals]
     : parseScore(fixture.score)
-  // Stream drawer: only when DB live and video file is ready.
+
+  // Accept genuine live OR virtual replay/completed sources — all need a video file.
   const isStreamLive = card.source === 'live_status' || fixture.status === 'live'
-  if (!isStreamLive || !fixture.has_video) return null
+  const isReplay = REPLAY_SOURCES.has(card.source)
+  if ((!isStreamLive && !isReplay) || !fixture.has_video) return null
 
   const final = matchSync?.finalStats
 
@@ -276,12 +325,14 @@ export function mapLiveCard(card: ApiLiveCard): LiveMatch | null {
     away: fixture.away_team.name,
     homeScore,
     awayScore,
-    status: 'live',
+    status: isStreamLive ? 'live' : 'completed',
     showAtMs: fixture.show_at_ms,
+    scheduledStartAtMs: fixture.scheduled_start_at_ms ?? undefined,
     virtualClockMs: card.virtual_clock_ms,
     hasVideo: fixture.has_video,
     source: card.source,
     isOnAir: true,
+    isFallback: isReplay,
     possession: final
       ? [Math.round(final.possession.homePct), Math.round(final.possession.awayPct)]
       : [50, 50],

@@ -8,14 +8,17 @@ import { UpcomingGamesCarousel } from '../components/carousel/UpcomingGamesCarou
 import { DataPanel } from '../components/table/DataPanel'
 import { LiveDrawer } from '../components/match/LiveDrawer'
 import { LIVE_DRAWER_WIDTH } from '../components/match/liveDrawerLayout'
-import { leagueSortIndex } from '../constants/leagues'
 import { useLeague } from '../context/LeagueContext'
 import { useFilteredData } from '../hooks/useFilteredData'
 import { usePlatformData } from '../context/PlatformDataContext'
 import { isBroadcastOnAir } from '../utils/liveVideo'
 import type { LeagueId, LiveMatch } from '../types'
 
-const MAX_LIVE_DRAWER_MATCHES = 4
+const MAX_LIVE_DRAWER_MATCHES = 8
+
+function kickoffSortKey(m: LiveMatch): number {
+  return m.scheduledStartAtMs ?? m.showAtMs ?? 0
+}
 
 export function HomePage() {
   const { selectedLeague } = useLeague()
@@ -23,33 +26,20 @@ export function HomePage() {
   useFilteredData(selectedLeague)
   const [liveOpen, setLiveOpen] = useState(false)
   const [focusMatchId, setFocusMatchId] = useState<string | undefined>()
-  const [finishedIds, setFinishedIds] = useState<Set<string>>(() => new Set())
   const liveDismissedRef = useRef(false)
 
-  /** Global broadcast drawer — all leagues, video-ready only (not filtered by selected tab). */
+  /** Stay on-air until backend marks completed (10-min window) — not when video ends. */
   const liveMatches = useMemo(() => {
-    const active = platformLive.filter(
-      (m) => isBroadcastOnAir(m) && !finishedIds.has(m.id),
-    )
-    const byLeague = new Map<string, LiveMatch>()
-    for (const m of active.sort(
-      (a, b) => leagueSortIndex(a.league) - leagueSortIndex(b.league),
-    )) {
-      if (!byLeague.has(m.league)) byLeague.set(m.league, m)
-    }
-    return [...byLeague.values()].slice(0, MAX_LIVE_DRAWER_MATCHES)
-  }, [platformLive, finishedIds])
-
-  useEffect(() => {
-    setFinishedIds((prev) => {
-      const onAir = new Set(platformLive.filter(isBroadcastOnAir).map((m) => m.id))
-      const pruned = new Set([...prev].filter((id) => onAir.has(id)))
-      return pruned.size === prev.size ? prev : pruned
-    })
+    return [...platformLive.filter(isBroadcastOnAir)]
+      .sort((a, b) => kickoffSortKey(a) - kickoffSortKey(b))
+      .slice(0, MAX_LIVE_DRAWER_MATCHES)
   }, [platformLive])
 
   useEffect(() => {
-    if (liveMatches.length === 0) return
+    if (liveMatches.length === 0) {
+      setLiveOpen(false)
+      return
+    }
     if (liveDismissedRef.current) return
     setLiveOpen(true)
     setFocusMatchId((prev) => {
@@ -76,10 +66,6 @@ export function HomePage() {
   const handleLiveOpenChange = useCallback((open: boolean) => {
     setLiveOpen(open)
     if (!open) liveDismissedRef.current = true
-  }, [])
-
-  const handleMatchEnded = useCallback((matchId: string) => {
-    setFinishedIds((prev) => new Set(prev).add(matchId))
   }, [])
 
   return (
@@ -125,7 +111,6 @@ export function HomePage() {
           onOpenChange={handleLiveOpenChange}
           focusLeague={selectedLeague}
           focusMatchId={focusMatchId}
-          onMatchEnded={handleMatchEnded}
         />
       </div>
     </AppShell>

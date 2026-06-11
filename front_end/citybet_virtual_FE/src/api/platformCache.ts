@@ -14,7 +14,9 @@ import type {
 } from '../types'
 
 const STORAGE_KEY = 'citybet_platform_cache'
-const CACHE_VERSION = 28
+const CACHE_VERSION = 35
+/** Carousel/live data older than this is not hydrated from localStorage. */
+export const CACHE_MAX_AGE_MS = 90_000
 
 type LeagueKey = 'Premier League' | 'La Liga' | 'Serie A' | 'Bundesliga'
 
@@ -60,8 +62,10 @@ export function buildFingerprint(parts: {
 }): string {
   const leagueSig = parts.leagues.map((l) => `${l.id}:${l.gameweek}`).join('|')
   const upSig = parts.upcoming
-    .slice(0, 16)
-    .map((u) => `${u.id}:${u.status}:${u.gameweek}:${u.hasVideo ?? ''}`)
+    .slice(0, 24)
+    .map((u) =>
+      `${u.id}:${u.status}:${u.gameweek}:${u.hasVideo ?? ''}:${u.carouselStep ?? ''}:${u.scheduledStartAtMs ?? ''}`,
+    )
     .join('|')
   const liveSig = parts.liveMatches
     .map((m) => `${m.id}:${m.status}:${m.hasVideo ?? ''}:${m.homeScore}-${m.awayScore}`)
@@ -92,6 +96,7 @@ export function loadPlatformCache(): PlatformCacheSnapshot | null {
     if (!raw) return null
     const data = JSON.parse(raw) as PlatformCacheSnapshot
     if (data.version !== CACHE_VERSION) return null
+    if (Date.now() - (data.savedAt ?? 0) > CACHE_MAX_AGE_MS) return null
     return {
       ...data,
       tables: data.tables ?? emptyTables(),

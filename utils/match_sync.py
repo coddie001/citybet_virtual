@@ -7,11 +7,16 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DUMPS_DIR = PROJECT_ROOT / "dumps"
+DUMPS_DIR = PROJECT_ROOT / ".bytecode_archive" / "dumps"
+if not DUMPS_DIR.is_dir():
+    DUMPS_DIR = PROJECT_ROOT / "dumps"
 VIDEO_DIR = PROJECT_ROOT / "videos"
 
 DEFAULT_VIDEO_DURATION_SEC = 300.0
 DEFAULT_TOTAL_STEPS = 3001
+
+# Cache ffprobe duration results — MP4 duration doesn't change after creation.
+_duration_cache: dict[str, float] = {}
 
 
 def _resolve_dump_path(match_id: uuid.UUID, gfr_stats: Optional[dict]) -> Optional[Path]:
@@ -37,6 +42,9 @@ def _resolve_video_duration_sec(match_id: uuid.UUID) -> float:
         path = VIDEO_DIR / name
         if not path.is_file():
             continue
+        cache_key = str(path)
+        if cache_key in _duration_cache:
+            return _duration_cache[cache_key]
         try:
             import subprocess
 
@@ -55,7 +63,9 @@ def _resolve_video_duration_sec(match_id: uuid.UUID) -> float:
                 text=True,
             ).strip()
             if out:
-                return max(1.0, float(out))
+                dur = max(1.0, float(out))
+                _duration_cache[cache_key] = dur
+                return dur
         except Exception:
             pass
     return DEFAULT_VIDEO_DURATION_SEC

@@ -3,8 +3,10 @@ import type { UpcomingMatch } from '../../types'
 interface MatchCardProps {
   match: UpcomingMatch
   countdown?: string
+  countdownLabel?: string
   showCountdown?: boolean
   showLive?: boolean
+  showUpNext?: boolean
   preloadVideoUrl?: string
   onWatchLive?: () => void
 }
@@ -12,8 +14,10 @@ interface MatchCardProps {
 export function MatchCard({
   match,
   countdown,
+  countdownLabel = 'Game starts',
   showCountdown,
   showLive,
+  showUpNext,
   preloadVideoUrl,
   onWatchLive,
 }: MatchCardProps) {
@@ -41,12 +45,17 @@ export function MatchCard({
         {showCountdown && countdown && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 backdrop-blur-[2px]">
             <span className="text-fluid-xs font-medium uppercase tracking-widest text-white/70">
-              Game Starts
+              {countdownLabel}
             </span>
             <span className="mt-1 font-mono text-fluid-3xl font-bold tabular-nums text-white">
               {countdown}
             </span>
           </div>
+        )}
+        {showUpNext && !showLive && !showCountdown && (
+          <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-black">
+            Up Next
+          </span>
         )}
         {showLive && !showCountdown && (
           <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-brand/90 px-2.5 py-1 text-[10px] font-bold uppercase text-black">

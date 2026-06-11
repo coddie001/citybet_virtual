@@ -35,8 +35,12 @@ api_running() {
     api_health_ok || api_port_listening
 }
 
-worker_running() { pgrep -f "workers.game_simulator" >/dev/null 2>&1; }
+worker_running() { pgrep -f "venv/bin/python3 -m workers.game_simulator --mode all" >/dev/null 2>&1; }
 coordinator_running() { pgrep -f "workers.platform_coordinator" >/dev/null 2>&1; }
+
+count_workers() {
+    pgrep -f "venv/bin/python3 -m workers.game_simulator --mode all" 2>/dev/null | wc -l | tr -d '[:space:]'
+}
 
 stop_pid() {
     local pidfile="$1"
@@ -108,7 +112,16 @@ start_coordinator() {
 }
 
 start_worker() {
-    if worker_running; then
+    local count
+    count="$(pgrep -fc 'workers\.game_simulator' 2>/dev/null | tr -d '[:space:]' || true)"
+    count="${count:-0}"
+    if [[ "$count" =~ ^[0-9]+$ ]] && [[ "$count" -gt 1 ]]; then
+        log "[Worker] Found $count duplicate workers; stopping extras …"
+        kill_all_orphans
+        sleep 1
+        count=0
+    fi
+    if [[ "$count" =~ ^[0-9]+$ ]] && [[ "$count" -eq 1 ]]; then
         log "[Worker] Already running."
         return 0
     fi

@@ -1,5 +1,6 @@
 """Broadcast policy: live status requires a confirmed MP4 on disk."""
 import logging
+import os
 import time
 from typing import Optional
 
@@ -14,7 +15,7 @@ from utils.virtual_schedule import (
 log = logging.getLogger(__name__)
 
 MAX_VIDEO_RENDER_ATTEMPTS = 2
-BROADCAST_LIVE_SEC = 300
+BROADCAST_LIVE_SEC = int(os.getenv("BROADCAST_LIVE_SEC", "600"))  # 10 min on-air window
 
 
 def _dump_steps(dump: Optional[GfrDump]) -> int:
@@ -169,24 +170,24 @@ def retry_or_complete_videoless(db, max_repairs: int = 1) -> int:
 
 def finalize_videos_before_promote(db, max_files: int = 3) -> int:
     """Remux/compress MP4s so promote_ready_to_live can see streamable files."""
-    from utils.video_faststart import finalize_mp4, needs_faststart
+    from utils.video_faststart import finalize_mp4, is_finalizable, needs_faststart
     from utils.video_compress import needs_reencode
     from utils.video_paths import VIDEO_DIR, video_path_for
     from utils.virtual_schedule import match_has_video
 
     done = 0
-    for f in db.query(Fixture).filter(Fixture.status.in_(("upcoming", "live"))).all():
+    for f in db.query(Fixture).filter(Fixture.status.in_(("upcoming", "live", "preparing"))).all():
         if done >= max_files:
             break
         dump = db.query(GfrDump).filter(GfrDump.match_id == f.match_id).first()
         if match_has_video(dump, f.match_id):
             continue
         for path in (video_path_for(f.match_id), VIDEO_DIR / f"{f.match_id}_full_small.mp4"):
-            if not path.is_file():
+            if not path.is_file() or not is_finalizable(path, check_writing=True):
                 continue
             if needs_faststart(path) or needs_reencode(path):
-                finalize_mp4(path, target_mb=5.0)
-                done += 1
+                if finalize_mp4(path, target_mb=4.5):
+                    done += 1
                 break
     return done
 
@@ -278,7 +279,42 @@ def manage_on_air_window(db) -> int:
 
 def fixture_ready_for_sim(fixture: Fixture, db) -> bool:
     """Worker may sim in the 3-min countdown window or for overdue kickoff backlog."""
+    from utils.carousel_schedule import use_wall_clock_schedule
+    from utils.virtual_schedule import fixture_progress_gameweek
+
     pred = dict(fixture.predictions or {})
+    if use_wall_clock_schedule():
+        if fixture.status not in ("upcoming", "preparing"):
+            return False
+        dump = db.query(GfrDump).filter(GfrDump.match_id == fixture.match_id).first()
+        if _dump_steps(dump) >= 100:
+            return False
+        season = db.query(Season).filter(Season.season_id == fixture.season_id).first()
+        if not season:
+            return False
+        prog = fixture_progress_gameweek(db, season.season_id) or 1
+        if fixture.gameweek != prog:
+            return False
+        if fixture.status == "preparing":
+            from utils.preparing_pipeline import pick_sim_target
+
+            picked = pick_sim_target(db)
+            return picked is not None and picked.match_id == fixture.match_id
+        for f in (
+            db.query(Fixture)
+            .filter(
+                Fixture.season_id == fixture.season_id,
+                Fixture.status.in_(("upcoming", "preparing")),
+                Fixture.gameweek == prog,
+            )
+            .order_by(Fixture.show_at_ms.asc())
+            .all()
+        ):
+            d = db.query(GfrDump).filter(GfrDump.match_id == f.match_id).first()
+            if _dump_steps(d) < 100:
+                return f.match_id == fixture.match_id
+        return False
+
     if pred.get("_processing_started_at"):
         return True
     season = db.query(Season).filter(Season.season_id == fixture.season_id).first()
@@ -292,18 +328,37 @@ def fixture_ready_for_sim(fixture: Fixture, db) -> bool:
     return 0 < until_real <= REAL_COUNTDOWN_MS
 
 
-def finalize_after_sim(db) -> None:
-    """Bytecode may set live/completed — enforce upcoming until MP4, then promote separately."""
+def finalize_after_sim(db, match_id=None) -> None:
+    """Bytecode may set live/completed — restore wall-clock status until promote."""
+    from utils.carousel_schedule import use_wall_clock_schedule
     from utils.db import Fixture as Fx
 
-    for f in db.query(Fx).filter(Fx.status.in_(("live", "completed"))).all():
+    now = time.time()
+    q = db.query(Fx).filter(Fx.status.in_(("live", "completed")))
+    if match_id is not None:
+        q = q.filter(Fx.match_id == match_id)
+
+    for f in q.all():
         dump = db.query(GfrDump).filter(GfrDump.match_id == f.match_id).first()
-        if match_has_video(dump, f.match_id):
-            pred = _clear_broadcast_keys(dict(f.predictions or {}))
-            f.predictions = pred
-            f.status = "upcoming"
-            continue
         pred = _clear_broadcast_keys(dict(f.predictions or {}))
+        has_vid = match_has_video(dump, f.match_id)
+        start_raw = pred.get("_scheduled_start_at")
+
+        if use_wall_clock_schedule() and start_raw is not None:
+            try:
+                start = float(start_raw)
+            except (TypeError, ValueError):
+                start = None
+            if start is not None and has_vid and now >= start and _dump_steps(dump) >= 100:
+                pred.setdefault("_broadcast_started_at", now)
+                f.predictions = pred
+                f.status = "live"
+                continue
+            if start is not None:
+                f.predictions = pred
+                f.status = "preparing"
+                continue
+
         f.predictions = pred
         f.status = "upcoming"
     db.commit()

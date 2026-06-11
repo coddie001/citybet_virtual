@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { api } from '../../api/client'
+import { api, VIDEO_PANE_REFRESH_MS } from '../../api/client'
 import { useVideoSyncedMatchState } from '../../hooks/useVideoSyncedMatchState'
 import { isBroadcastOnAir } from '../../utils/liveVideo'
 import {
@@ -12,7 +12,10 @@ import {
   setVideoDebugFailure,
   type VideoPlaybackFailure,
 } from '../../utils/videoPlaybackDebug'
+import { useMatchCommentary } from '../../hooks/useMatchCommentary'
 import { GameStatsBar } from './GameStatsBar'
+import { LiveCommentaryStrip } from './LiveCommentaryStrip'
+import { LiveScoreHeader } from './LiveScoreHeader'
 import type { LiveMatch } from '../../types'
 
 interface LiveVideoTileProps {
@@ -27,10 +30,15 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
   const [videoError, setVideoError] = useState(false)
   const [failure, setFailure] = useState<VideoPlaybackFailure | null>(null)
   const [videoTimeSec, setVideoTimeSec] = useState(0)
+  const [videoDurationSec, setVideoDurationSec] = useState(0)
   const [videoEnded, setVideoEnded] = useState(false)
   const [muted, setMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const synced = useVideoSyncedMatchState(match, videoTimeSec, videoEnded)
+  const synced = useVideoSyncedMatchState(match, videoTimeSec, videoEnded, videoDurationSec)
+  const commentary = useMatchCommentary(match, videoTimeSec, videoEnded, {
+    home: synced.homeScore,
+    away: synced.awayScore,
+  })
 
   const sources = useMemo(() => api.videoSources(match.id), [match.id])
   const onAir = isBroadcastOnAir(match)
@@ -41,8 +49,26 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
     setVideoError(false)
     setFailure(null)
     setVideoTimeSec(0)
+    setVideoDurationSec(0)
     setVideoEnded(false)
   }, [match.id])
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el || !videoSrc || !onAir) return
+    const applyDuration = () => {
+      if (el.duration && Number.isFinite(el.duration) && el.duration > 0) {
+        setVideoDurationSec(el.duration)
+      }
+    }
+    applyDuration()
+    el.addEventListener('loadedmetadata', applyDuration)
+    el.addEventListener('durationchange', applyDuration)
+    return () => {
+      el.removeEventListener('loadedmetadata', applyDuration)
+      el.removeEventListener('durationchange', applyDuration)
+    }
+  }, [videoSrc, onAir, match.id])
 
   useEffect(() => {
     if (!videoSrc || !onAir || videoError) return
@@ -102,6 +128,46 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
     }
   }, [videoSrc, videoError, onAir, muted, match.id])
 
+  /** Recover stalled streams without disrupting smooth playback. */
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el || !videoSrc || videoError || !onAir) return
+
+    let lastTime = el.currentTime
+    let lastAdvance = Date.now()
+
+    const id = window.setInterval(() => {
+      if (el.paused || el.ended) {
+        lastTime = el.currentTime
+        lastAdvance = Date.now()
+        return
+      }
+      if (el.currentTime > lastTime + 0.05) {
+        lastTime = el.currentTime
+        lastAdvance = Date.now()
+        return
+      }
+      if (Date.now() - lastAdvance < 15_000) return
+
+      const t = el.currentTime
+      const wasMuted = el.muted
+      el.load()
+      const resume = () => {
+        try {
+          el.currentTime = t
+        } catch {
+          // ignore seek errors
+        }
+        el.muted = wasMuted
+        void el.play().catch(() => {})
+        lastAdvance = Date.now()
+      }
+      el.addEventListener('loadeddata', resume, { once: true })
+    }, VIDEO_PANE_REFRESH_MS)
+
+    return () => window.clearInterval(id)
+  }, [videoSrc, videoError, onAir, match.id])
+
   useEffect(() => {
     const el = videoRef.current
     if (!el || !videoSrc || videoError || !onAir) return
@@ -133,35 +199,14 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
 
   const errorText = videoError ? failureMessage(failure) : 'Waiting for broadcast…'
 
-  const scoreLine = (
-    <div className={expanded ? 'mb-3 shrink-0' : 'px-2 pt-1'}>
-      {expanded && (
-        <p className="text-fluid-xs font-semibold uppercase tracking-wider text-brand">
-          {match.league}
-        </p>
-      )}
-      <div
-        className={
-          expanded
-            ? 'mt-1 grid grid-cols-[1fr_auto_1fr] items-center gap-2'
-            : 'truncate text-center text-[11px] text-white/80'
-        }
-      >
-        <p className={expanded ? 'truncate text-right text-fluid-sm font-medium text-white' : ''}>
-          {expanded ? match.home : `${match.home} `}
-        </p>
-        <span
-          className={
-            expanded
-              ? 'font-mono text-fluid-lg font-bold tabular-nums text-white'
-              : 'font-mono font-bold text-white'
-          }
-        >
+  const compactScoreLine = (
+    <div className="px-2 pt-1">
+      <div className="truncate text-center text-[11px] text-white/80">
+        {match.home}{' '}
+        <span className="font-mono font-bold text-white">
           {synced.homeScore} – {synced.awayScore}
-        </span>
-        <p className={expanded ? 'truncate text-left text-fluid-sm font-medium text-white' : ''}>
-          {expanded ? match.away : match.away}
-        </p>
+        </span>{' '}
+        {match.away}
       </div>
     </div>
   )
@@ -170,7 +215,7 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
     <div
       className={
         expanded
-          ? 'live-video-frame relative min-h-[220px] flex-1 overflow-hidden rounded-lg border border-white/10 bg-black'
+          ? 'live-video-frame live-video-clean relative min-h-[200px] shrink-0 overflow-hidden rounded-xl border border-white/10 bg-black shadow-inner'
           : 'relative aspect-video w-full bg-black'
       }
     >
@@ -202,10 +247,20 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
 
   if (expanded) {
     return (
-      <div className="flex h-full min-h-0 flex-col">
-        {scoreLine}
+      <div className="flex min-h-0 flex-1 flex-col gap-3">
+        <LiveScoreHeader
+          league={match.league}
+          home={match.home}
+          away={match.away}
+          homeScore={synced.homeScore}
+          awayScore={synced.awayScore}
+          matchMinute={commentary.matchMinute}
+          isReplay={match.isFallback === true}
+        />
+
         {videoBlock}
-        <div className="mt-3 flex shrink-0 items-center justify-end">
+        <div className="flex shrink-0 items-center justify-between gap-2">
+          <p className="text-[10px] text-white/35">Clean feed — commentary below</p>
           <button
             type="button"
             onClick={() => setMuted((m) => !m)}
@@ -214,9 +269,8 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
             {muted ? 'Unmute' : 'Mute'}
           </button>
         </div>
-        <div className="shrink-0">
-          <GameStatsBar synced={synced} />
-        </div>
+        <LiveCommentaryStrip line={commentary.activeLine} kind={commentary.activeKind} />
+        <GameStatsBar synced={synced} />
       </div>
     )
   }
@@ -236,7 +290,7 @@ export function LiveVideoTile({ match, onEnded, expanded = false }: LiveVideoTil
           {muted ? '🔇' : '🔊'}
         </button>
       </div>
-      {scoreLine}
+      {compactScoreLine}
       {videoBlock}
     </div>
   )

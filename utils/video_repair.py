@@ -74,7 +74,8 @@ def repair_one(db, match_id: uuid.UUID) -> bool:
 
     from utils.video_faststart import finalize_mp4
 
-    finalize_mp4(canonical, target_mb=5.0)
+    if not finalize_mp4(canonical, target_mb=4.5):
+        return False
 
     dump.video_url = str(canonical)
     db.commit()

@@ -13,7 +13,8 @@ export interface ApiSeason {
 export interface ApiCountdown {
   next_match_id: string
   show_at_ms: number
-  virtual_clock_ms: number
+  virtual_clock_ms?: number
+  scheduled_start_at_ms?: number | null
   ms_until_kickoff: number
   in_countdown_window: boolean
   countdown_seconds: number
@@ -21,6 +22,32 @@ export interface ApiCountdown {
   formatted: string
   /** Backend sends real milliseconds when true (3-min processing countdown). */
   countdown_real_ms?: boolean
+}
+
+export interface ApiCarouselItem {
+  carousel_id: string
+  carousel_step: number
+  match_id: string
+  season_id: string
+  league_name: string
+  gameweek: number
+  show_at_ms: number
+  scheduled_start_at_ms: number | null
+  status: string
+  has_video: boolean
+  is_next?: boolean
+  fixture_image_url: string | null
+  home_team: { id: string; name: string } | null
+  away_team: { id: string; name: string } | null
+  countdown: ApiCountdown
+}
+
+export interface ApiCarouselResponse {
+  mode: 'wall_clock' | 'legacy'
+  server_time_ms: number
+  queue_interval_sec?: number
+  items: ApiCarouselItem[]
+  total: number
 }
 
 export interface ApiLeague {
@@ -50,6 +77,8 @@ export interface ApiFixture {
   predictions?: unknown
   outcome?: unknown
   has_video?: boolean
+  scheduled_start_at_ms?: number | null
+  match_sync?: ApiMatchSyncPayload | null
 }
 
 export interface ApiTableRow {
@@ -153,6 +182,7 @@ export interface ApiFixtureCard {
   away_team: { id: string; name: string } | null
   has_video: boolean
   video_endpoint: string
+  scheduled_start_at_ms?: number | null
   match_sync?: ApiMatchSyncPayload | null
 }
 

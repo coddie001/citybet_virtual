@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { useFilteredData } from '../../hooks/useFilteredData'
 import { useLeague } from '../../context/LeagueContext'
 import { getSyncedGameweek, usePlatformData } from '../../context/PlatformDataContext'
 import { CarouselMatchCard } from './CarouselMatchCard'
@@ -9,15 +8,12 @@ interface UpcomingGamesCarouselProps {
   onWatchLive?: (league: LeagueId, matchId?: string) => void
 }
 
-function sortByKickoff<T extends { showAtMs: number }>(items: T[]): T[] {
-  return [...items].sort((a, b) => a.showAtMs - b.showAtMs)
-}
-
 function gameweekFloor(leagues: { id: LeagueId; gameweek: number }[], league: LeagueId): number {
   return leagues.find((l) => l.id === league)?.gameweek ?? 1
 }
 
-function filterCarouselQueue(
+/** Legacy fallback filter when backend carousel is unavailable. */
+function filterLegacyQueue(
   queue: UpcomingMatch[],
   leagues: { id: LeagueId; gameweek: number }[],
 ): UpcomingMatch[] {
@@ -30,35 +26,32 @@ function filterCarouselQueue(
   )
 }
 
+/** Backend `/carousel` already orders by carousel_step — preserve that order. */
+function orderCarouselQueue(queue: UpcomingMatch[]): UpcomingMatch[] {
+  if (queue.some((m) => m.carouselStep != null)) {
+    return [...queue].sort((a, b) => (a.carouselStep ?? 0) - (b.carouselStep ?? 0))
+  }
+  return [...queue].sort(
+    (a, b) =>
+      (a.scheduledStartAtMs ?? a.showAtMs) - (b.scheduledStartAtMs ?? b.showAtMs),
+  )
+}
+
 export function UpcomingGamesCarousel({ onWatchLive }: UpcomingGamesCarouselProps) {
   const { selectedLeague, isAllLeagues } = useLeague()
-  const {
-    leagues,
-    countdownByLeague,
-    clocksByLeague,
-    fixtures,
-    results,
-  } = usePlatformData()
-  const { upcoming: queue } = useFilteredData(selectedLeague)
+  const { leagues, upcoming: queue, fixtures, results } = usePlatformData()
 
-  /** Carousel is independent of table league rotation — never use useLeagueRotation here. */
   const displayGameweek = isAllLeagues
     ? leagues.length > 0
       ? Math.min(...leagues.map((l) => l.gameweek))
       : 1
     : getSyncedGameweek(leagues, fixtures, results, selectedLeague)
 
-  const visibleQueue = useMemo(
-    () => sortByKickoff(filterCarouselQueue(queue, leagues)),
-    [queue, leagues],
-  )
-
-  const clockForMatch = (league: LeagueId): number | undefined => {
-    if (league !== 'ALL' && clocksByLeague[league] != null) {
-      return clocksByLeague[league]
-    }
-    return undefined
-  }
+  const visibleQueue = useMemo(() => {
+    const backendDriven = queue.some((m) => m.carouselStep != null)
+    const filtered = backendDriven ? queue : filterLegacyQueue(queue, leagues)
+    return orderCarouselQueue(filtered)
+  }, [queue, leagues])
 
   return (
     <section className="animate-slide-up">
@@ -75,14 +68,8 @@ export function UpcomingGamesCarousel({ onWatchLive }: UpcomingGamesCarouselProp
         <div className="flex gap-4 overflow-x-auto pb-2 sm:gap-5">
           {visibleQueue.map((match) => (
             <CarouselMatchCard
-              key={match.id}
+              key={match.carouselId ?? match.id}
               match={match}
-              virtualClockMs={clockForMatch(match.league)}
-              apiCountdown={
-                countdownByLeague[match.league]?.next_match_id === match.id
-                  ? countdownByLeague[match.league]
-                  : null
-              }
               onWatchLive={onWatchLive}
             />
           ))}

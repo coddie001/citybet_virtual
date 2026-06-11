@@ -130,18 +130,24 @@ def supersede_stale_upcoming(db) -> int:
 
 def run_broadcast_gate(db) -> int:
     """Live requires MP4; retry failed renders twice; then score and complete."""
+    from utils.broadcast_gate import purge_illegal_live
+    from utils.carousel_schedule import run_wall_clock_broadcast_gate, use_wall_clock_schedule
+
+    total = purge_illegal_live(db)
+
+    if use_wall_clock_schedule():
+        total += run_wall_clock_broadcast_gate(db)
+        return total
+
     from utils.broadcast_gate import (
         begin_processing_countdowns,
         finalize_videos_before_promote,
         manage_on_air_window,
         promote_ready_to_live,
-        purge_illegal_live,
         retry_or_complete_videoless,
     )
 
-    total = 0
     total += begin_processing_countdowns(db)
-    total += purge_illegal_live(db)
     total += retry_or_complete_videoless(db, max_repairs=1)
     total += finalize_videos_before_promote(db)
     total += promote_ready_to_live(db)
@@ -187,31 +193,62 @@ def consolidate_videos(db) -> int:
     return n
 
 
+def sweep_stuck_partials(db, max_repairs: int = 1) -> int:
+    """Re-render quarantined partial MP4s from GFR dump when possible."""
+    import uuid
+
+    from utils.video_paths import VIDEO_DIR
+    from utils.video_repair import repair_one
+
+    repaired = 0
+    for partial in sorted(VIDEO_DIR.glob("*_full.partial.mp4")):
+        if repaired >= max_repairs:
+            break
+        mid_str = partial.name.replace("_full.partial.mp4", "")
+        try:
+            mid = uuid.UUID(mid_str)
+        except ValueError:
+            continue
+        if repair_one(db, mid):
+            partial.unlink(missing_ok=True)
+            repaired += 1
+            log.info("Re-rendered quarantined video for %s", mid_str)
+    return repaired
+
+
 def compress_oversized_videos(db) -> int:
-    """Finalize MP4s: faststart remux + re-encode to <= 5 MB (one per cycle)."""
+    """Finalize MP4s: faststart remux + re-encode to 4000–5000 KB (one per cycle)."""
     from utils.video_compress import needs_reencode
-    from utils.video_faststart import finalize_mp4, needs_faststart
+    from utils.video_faststart import finalize_mp4, is_finalizable, needs_faststart
     from utils.video_paths import VIDEO_DIR
     from utils.virtual_schedule import resolve_video_file
 
     done = 0
     candidates: list = []
     for mp4 in sorted(VIDEO_DIR.glob("*_full.mp4"), key=lambda p: p.stat().st_size, reverse=True):
+        if not is_finalizable(mp4, check_writing=True):
+            continue
         if needs_faststart(mp4) or needs_reencode(mp4):
             candidates.append(mp4)
     for dump in db.query(GfrDump).order_by(GfrDump.match_id.desc()).limit(200).all():
         path = resolve_video_file(dump.match_id, dump)
-        if path and (needs_faststart(path) or needs_reencode(path)) and path not in candidates:
+        if (
+            path
+            and path.is_file()
+            and is_finalizable(path, check_writing=True)
+            and (needs_faststart(path) or needs_reencode(path))
+            and path not in candidates
+        ):
             candidates.append(path)
 
     for path in candidates:
         if done >= 1:
             break
-        finalize_mp4(path, target_mb=5.0)
-        dump = db.query(GfrDump).filter(GfrDump.video_url.contains(path.name)).first()
-        if dump:
-            dump.video_url = str(path)
-        done += 1
+        if finalize_mp4(path, target_mb=4.5):
+            dump = db.query(GfrDump).filter(GfrDump.video_url.contains(path.name)).first()
+            if dump:
+                dump.video_url = str(path)
+            done += 1
     if done:
         db.commit()
         log.info("Finalized %d match video(s) for web streaming.", done)
@@ -224,8 +261,13 @@ def run_once() -> None:
         ensure_seeded(db)
         ensure_fixtures(db)
         reconcile_stale_fixtures(db)
+        supersede_stale_upcoming(db)
         run_broadcast_gate(db)
         consolidate_videos(db)
+        sweep_stuck_partials(db)
+        from utils.video_faststart import sanitize_corrupt_videos
+
+        sanitize_corrupt_videos()
         compress_oversized_videos(db)
         sync_season_gameweeks(db)
         refresh_tables_and_stats(db)
@@ -239,7 +281,13 @@ def run_once() -> None:
 
 
 def run_loop() -> None:
-    log.info("Platform coordinator started (interval=%ss).", INTERVAL_SEC)
+    from utils.carousel_schedule import schedule_mode
+
+    log.info(
+        "Platform coordinator started (interval=%ss, schedule=%s).",
+        INTERVAL_SEC,
+        schedule_mode(),
+    )
     while True:
         try:
             run_once()

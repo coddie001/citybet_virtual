@@ -1,0 +1,3 @@
+[submodule "front_end/g_football"]
+	path = front_end/g_football
+	url = https://github.com/google-research/football.git

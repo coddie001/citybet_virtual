@@ -5,6 +5,7 @@ venv/
 .venv/
 env/
 videos/
+gfootball_src/
 *.mp4
 *.mkv
 *.mov

@@ -1,0 +1,95 @@
+{
+  "fixture": "Fulham vs Arsenal",
+  "db_attrs_sample": {
+    "home": {
+      "0": {
+        "name": "B. Leno",
+        "rating": 3,
+        "velocity": 1.08,
+        "tired_factor": 0.0
+      },
+      "1": {
+        "name": "A. Robinson",
+        "rating": 4,
+        "velocity": 1.25,
+        "tired_factor": 0.0
+      },
+      "2": {
+        "name": "C. Bassey",
+        "rating": 3,
+        "velocity": 1.22,
+        "tired_factor": 0.0
+      }
+    },
+    "away": {
+      "0": {
+        "name": "David Raya",
+        "rating": 5,
+        "velocity": 1.12,
+        "tired_factor": 0.0
+      },
+      "1": {
+        "name": "P. Hincapi\u00e9",
+        "rating": 4,
+        "velocity": 1.24,
+        "tired_factor": 0.0
+      },
+      "2": {
+        "name": "Gabriel",
+        "rating": 5,
+        "velocity": 1.14,
+        "tired_factor": 0.0
+      }
+    }
+  },
+  "home_player_positions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "probe": {
+    "gfootball_already_flips_right_obs": true,
+    "after_mirror_away_agent_thinks_home_players_are_its_own": true,
+    "ball_real": [
+      -4.91766294352658e-10,
+      0.0012868086341768503
+    ],
+    "ball_seen_by_away_from_gfootball": [
+      4.91766294352658e-10,
+      -0.0012868086341768503
+    ],
+    "ball_seen_by_away_after_mirror": [
+      -4.91766294352658e-10,
+      0.0012868086341768503
+    ],
+    "away_ball_owned_team_gf_vs_mirrored": [
+      1,
+      0
+    ]
+  },
+  "test1_current_logic": {
+    "final_lines": [
+      "[child] \u26bd Home goal! 1:0 step=1629",
+      "[child] \u26bd Home goal! 2:0 step=1830",
+      "[child] FINAL Fulham 2-0 Arsenal  possession H/A: 69%/13%"
+    ],
+    "score": "2-0",
+    "steps": 3001
+  },
+  "test2_no_double_mirror": {
+    "final_lines": [
+      "[child] \u26bd Away goal! 0:1 step=391",
+      "[child] FINAL Fulham 0-1 Arsenal  possession H/A: 13%/59%"
+    ],
+    "score": "0-1",
+    "steps": 3001
+  }
+}

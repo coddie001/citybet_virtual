@@ -53,6 +53,17 @@ def match_has_video(dump: Optional[GfrDump], match_id: uuid.UUID) -> bool:
     return resolve_streamable_video(match_id, dump_url) is not None
 
 
+def dump_has_video_record(dump: Optional[GfrDump]) -> bool:
+    """Cheap DB-only check: True when GfrDump records a video path.
+
+    Use this in high-frequency poll paths (e.g. /live/all) where reading
+    the MP4 header from disk would be too slow.
+    """
+    if dump is None:
+        return False
+    return bool(dump.video_url or dump.match_video)
+
+
 def effective_fixture_status(fixture: Fixture, dump: Optional[GfrDump] = None) -> str:
     """API-facing status — never live without streamable MP4; sim-running stays preparing."""
     if fixture.status == "live" and not match_has_video(dump, fixture.match_id):
@@ -146,6 +157,8 @@ def resolve_live_fixture(
     db: Session,
     season_id: uuid.UUID,
     virtual_ms: Optional[int] = None,
+    *,
+    skip_video_probe: bool = False,
 ) -> Tuple[Optional[Fixture], int, str]:
     season = db.query(Season).filter(Season.season_id == season_id).first()
     if not season:
@@ -163,7 +176,8 @@ def resolve_live_fixture(
     )
     if live:
         dump = db.query(GfrDump).filter(GfrDump.match_id == live.match_id).first()
-        if match_has_video(dump, live.match_id):
+        has_vid = dump_has_video_record(dump) if skip_video_probe else match_has_video(dump, live.match_id)
+        if has_vid:
             return live, clock, "live_status"
 
     if use_wall_clock_schedule():
@@ -370,10 +384,27 @@ def serialize_fixture_card(
     virtual_ms: int,
     *,
     skip_match_sync: bool = False,
+    skip_video_probe: bool = False,
+    preloaded_teams: dict | None = None,
+    preloaded_dumps: dict | None = None,
 ) -> dict:
-    home = db.query(Team).filter(Team.team_id == fixture.home_team_id).first()
-    away = db.query(Team).filter(Team.team_id == fixture.away_team_id).first()
-    dump = db.query(GfrDump).filter(GfrDump.match_id == fixture.match_id).first()
+    """Serialize a fixture card for the API response.
+
+    Pass ``preloaded_teams`` and ``preloaded_dumps`` (keyed by UUID) to avoid
+    N+1 DB queries when rendering many cards (e.g. in /live/all).
+    """
+    if preloaded_teams is not None:
+        home = preloaded_teams.get(fixture.home_team_id)
+        away = preloaded_teams.get(fixture.away_team_id)
+    else:
+        home = db.query(Team).filter(Team.team_id == fixture.home_team_id).first()
+        away = db.query(Team).filter(Team.team_id == fixture.away_team_id).first()
+
+    if preloaded_dumps is not None:
+        dump = preloaded_dumps.get(fixture.match_id)
+    else:
+        dump = db.query(GfrDump).filter(GfrDump.match_id == fixture.match_id).first()
+
     next_ms = (
         db.query(Fixture.show_at_ms)
         .filter(
@@ -404,7 +435,7 @@ def serialize_fixture_card(
         "fixture_image_url": fixture.fixture_image_url,
         "home_team": {"id": str(home.team_id), "name": home.team_name} if home else None,
         "away_team": {"id": str(away.team_id), "name": away.team_name} if away else None,
-        "has_video": match_has_video(dump, fixture.match_id),
+        "has_video": dump_has_video_record(dump) if skip_video_probe else match_has_video(dump, fixture.match_id),
         "video_endpoint": f"/video/{fixture.match_id}",
         "scheduled_start_at_ms": scheduled_start_at_ms,
         "match_sync": match_sync,

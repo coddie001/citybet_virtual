@@ -1,0 +1,504 @@
+# BTTS + pitch sanity test — 2026-11-06 16:25
+
+**Verdict: PASS**  (BTTS match: Fulham vs Arsenal)
+
+| Match | Score | Both scored | Pitch/flow checks | Possession H/A |
+|---|---|---|---|---|
+| Bayern Munich vs Borussia Dortmund | 0-1 | False | True | {'home': 49, 'away': 51} |
+| Everton vs Southampton | 0-0 | False | True | {'home': 48, 'away': 52} |
+| Fulham vs Arsenal | 1-2 | True | True | {'home': 60, 'away': 40} |
+| Mallorca vs Barcelona | 0-1 | False | True | {'home': 41, 'away': 59} |
+
+## Detail: Bayern Munich vs Borussia Dortmund (0-1)
+
+| Check | Result |
+|---|---|
+| players_stay_on_pitch | PASS |
+| ball_inside_pitch_in_open_play | PASS |
+| goals_scored_at_correct_ends | PASS |
+| restart_from_centre_after_goals | PASS |
+| teams_in_own_halves_on_average | PASS |
+| both_teams_use_the_width | PASS |
+| no_stuck_outfield_players | PASS |
+| no_unexplained_teleporting | PASS |
+| possession_balanced_15_85 | PASS |
+| full_length_match | PASS |
+| normal_turnovers_and_setpieces | PASS |
+
+```json
+{
+  "dump_steps": 3001,
+  "players_beyond_lines": {
+    "player_steps_strictly_on_pitch_pct": 85.45,
+    "max_excursion_open_play": 0.069,
+    "max_excursion_dead_ball": 0.046,
+    "player_steps_beyond_lines_open_play": 9488,
+    "player_steps_beyond_lines_dead_ball": 115,
+    "total_player_steps": 66022
+  },
+  "player_extent": {
+    "x_min": -1.066,
+    "x_max": 1.069,
+    "y_min": -0.469,
+    "y_max": 0.466
+  },
+  "ball_outside_in_open_play_steps": 0,
+  "ball_max_height_z": 6.183,
+  "goals": [
+    {
+      "step": 426,
+      "scorer": "away",
+      "score": [
+        0,
+        1
+      ],
+      "ball_x_before_goal": -1.013,
+      "restart_from_centre": true
+    }
+  ],
+  "goal_end_ok": [
+    true
+  ],
+  "final_score": [
+    0,
+    1
+  ],
+  "both_teams_scored": false,
+  "mean_outfield_x": {
+    "home": -0.089,
+    "away": 0.049
+  },
+  "home_centroid_behind_away_pct": 84.1,
+  "avg_team_depth_x_spread": {
+    "home": 0.551,
+    "away": 0.521
+  },
+  "avg_team_width_y_spread": {
+    "home": 0.253,
+    "away": 0.241
+  },
+  "distance_covered_per_player": {
+    "home": [
+      18.1,
+      42.7,
+      41.5,
+      37.7,
+      37.2,
+      40.6,
+      36.9,
+      35.2,
+      40.7,
+      22.5,
+      39.1
+    ],
+    "away": [
+      16.7,
+      37.9,
+      38.6,
+      42.3,
+      42.3,
+      36.7,
+      37.2,
+      36.0,
+      37.9,
+      40.0,
+      38.2
+    ]
+  },
+  "position_jumps": {
+    "total": 31,
+    "after_goal_reset": 1,
+    "half_time": 1,
+    "dead_ball_restart": 29,
+    "unexplained_steps": []
+  },
+  "max_player_step_speed_excluding_resets": 0.0153,
+  "possession_pct_of_owned_steps": {
+    "home": 49,
+    "away": 51
+  },
+  "ball_free_steps": 1411,
+  "turnovers_home_away": 47,
+  "game_mode_steps": {
+    "normal": 2779,
+    "goal_kick": 35,
+    "free_kick": 90,
+    "corner": 30,
+    "throw_in": 67
+  },
+  "ball_owner_changes_between_teams": 47,
+  "all_checks_pass": true
+}
+```
+
+## Detail: Everton vs Southampton (0-0)
+
+| Check | Result |
+|---|---|
+| players_stay_on_pitch | PASS |
+| ball_inside_pitch_in_open_play | PASS |
+| teams_in_own_halves_on_average | PASS |
+| both_teams_use_the_width | PASS |
+| no_stuck_outfield_players | PASS |
+| no_unexplained_teleporting | PASS |
+| possession_balanced_15_85 | PASS |
+| full_length_match | PASS |
+| normal_turnovers_and_setpieces | PASS |
+
+```json
+{
+  "dump_steps": 3001,
+  "players_beyond_lines": {
+    "player_steps_strictly_on_pitch_pct": 81.93,
+    "max_excursion_open_play": 0.081,
+    "max_excursion_dead_ball": 0.046,
+    "player_steps_beyond_lines_open_play": 11759,
+    "player_steps_beyond_lines_dead_ball": 174,
+    "total_player_steps": 66022
+  },
+  "player_extent": {
+    "x_min": -1.068,
+    "x_max": 1.081,
+    "y_min": -0.468,
+    "y_max": 0.48
+  },
+  "ball_outside_in_open_play_steps": 0,
+  "ball_max_height_z": 11.563,
+  "goals": [],
+  "goal_end_ok": [],
+  "final_score": [
+    0,
+    0
+  ],
+  "both_teams_scored": false,
+  "mean_outfield_x": {
+    "home": 0.011,
+    "away": 0.105
+  },
+  "home_centroid_behind_away_pct": 74.3,
+  "avg_team_depth_x_spread": {
+    "home": 0.56,
+    "away": 0.526
+  },
+  "avg_team_width_y_spread": {
+    "home": 0.251,
+    "away": 0.246
+  },
+  "distance_covered_per_player": {
+    "home": [
+      16.8,
+      37.7,
+      38.6,
+      39.9,
+      39.3,
+      39.0,
+      36.5,
+      38.2,
+      38.5,
+      40.2,
+      36.9
+    ],
+    "away": [
+      20.5,
+      38.6,
+      41.3,
+      40.8,
+      37.5,
+      37.6,
+      39.9,
+      32.5,
+      39.7,
+      36.5,
+      36.2
+    ]
+  },
+  "position_jumps": {
+    "total": 31,
+    "after_goal_reset": 0,
+    "half_time": 2,
+    "dead_ball_restart": 29,
+    "unexplained_steps": []
+  },
+  "max_player_step_speed_excluding_resets": 0.0154,
+  "possession_pct_of_owned_steps": {
+    "home": 48,
+    "away": 52
+  },
+  "ball_free_steps": 1571,
+  "turnovers_home_away": 26,
+  "game_mode_steps": {
+    "normal": 2722,
+    "goal_kick": 33,
+    "free_kick": 125,
+    "corner": 16,
+    "throw_in": 105
+  },
+  "ball_owner_changes_between_teams": 26,
+  "all_checks_pass": true
+}
+```
+
+## Detail: Fulham vs Arsenal (1-2)
+
+| Check | Result |
+|---|---|
+| players_stay_on_pitch | PASS |
+| ball_inside_pitch_in_open_play | PASS |
+| goals_scored_at_correct_ends | PASS |
+| restart_from_centre_after_goals | PASS |
+| teams_in_own_halves_on_average | PASS |
+| both_teams_use_the_width | PASS |
+| no_stuck_outfield_players | PASS |
+| no_unexplained_teleporting | PASS |
+| possession_balanced_15_85 | PASS |
+| full_length_match | PASS |
+| normal_turnovers_and_setpieces | PASS |
+
+```json
+{
+  "dump_steps": 3001,
+  "players_beyond_lines": {
+    "player_steps_strictly_on_pitch_pct": 87.62,
+    "max_excursion_open_play": 0.071,
+    "max_excursion_dead_ball": 0.046,
+    "player_steps_beyond_lines_open_play": 8054,
+    "player_steps_beyond_lines_dead_ball": 118,
+    "total_player_steps": 66022
+  },
+  "player_extent": {
+    "x_min": -1.068,
+    "x_max": 1.071,
+    "y_min": -0.468,
+    "y_max": 0.486
+  },
+  "ball_outside_in_open_play_steps": 0,
+  "ball_max_height_z": 8.547,
+  "goals": [
+    {
+      "step": 374,
+      "scorer": "home",
+      "score": [
+        1,
+        0
+      ],
+      "ball_x_before_goal": 1.005,
+      "restart_from_centre": true
+    },
+    {
+      "step": 1919,
+      "scorer": "away",
+      "score": [
+        1,
+        1
+      ],
+      "ball_x_before_goal": -1.014,
+      "restart_from_centre": true
+    },
+    {
+      "step": 2787,
+      "scorer": "away",
+      "score": [
+        1,
+        2
+      ],
+      "ball_x_before_goal": -1.003,
+      "restart_from_centre": true
+    }
+  ],
+  "goal_end_ok": [
+    true,
+    true,
+    true
+  ],
+  "final_score": [
+    1,
+    2
+  ],
+  "both_teams_scored": true,
+  "mean_outfield_x": {
+    "home": -0.311,
+    "away": -0.083
+  },
+  "home_centroid_behind_away_pct": 92.1,
+  "avg_team_depth_x_spread": {
+    "home": 0.452,
+    "away": 0.483
+  },
+  "avg_team_width_y_spread": {
+    "home": 0.238,
+    "away": 0.243
+  },
+  "distance_covered_per_player": {
+    "home": [
+      18.8,
+      42.6,
+      42.2,
+      39.1,
+      34.7,
+      43.3,
+      40.5,
+      37.8,
+      42.2,
+      43.8,
+      37.8
+    ],
+    "away": [
+      15.8,
+      46.0,
+      46.8,
+      46.0,
+      45.1,
+      44.4,
+      44.6,
+      44.8,
+      42.9,
+      46.5,
+      49.4
+    ]
+  },
+  "position_jumps": {
+    "total": 35,
+    "after_goal_reset": 3,
+    "half_time": 1,
+    "dead_ball_restart": 31,
+    "unexplained_steps": []
+  },
+  "max_player_step_speed_excluding_resets": 0.015,
+  "possession_pct_of_owned_steps": {
+    "home": 60,
+    "away": 40
+  },
+  "ball_free_steps": 1485,
+  "turnovers_home_away": 28,
+  "game_mode_steps": {
+    "normal": 2739,
+    "goal_kick": 89,
+    "free_kick": 78,
+    "corner": 8,
+    "throw_in": 87
+  },
+  "ball_owner_changes_between_teams": 28,
+  "all_checks_pass": true
+}
+```
+
+## Detail: Mallorca vs Barcelona (0-1)
+
+| Check | Result |
+|---|---|
+| players_stay_on_pitch | PASS |
+| ball_inside_pitch_in_open_play | PASS |
+| goals_scored_at_correct_ends | PASS |
+| restart_from_centre_after_goals | PASS |
+| teams_in_own_halves_on_average | PASS |
+| both_teams_use_the_width | PASS |
+| no_stuck_outfield_players | PASS |
+| no_unexplained_teleporting | PASS |
+| possession_balanced_15_85 | PASS |
+| full_length_match | PASS |
+| normal_turnovers_and_setpieces | PASS |
+
+```json
+{
+  "dump_steps": 3001,
+  "players_beyond_lines": {
+    "player_steps_strictly_on_pitch_pct": 81.55,
+    "max_excursion_open_play": 0.105,
+    "max_excursion_dead_ball": 0.046,
+    "player_steps_beyond_lines_open_play": 11965,
+    "player_steps_beyond_lines_dead_ball": 219,
+    "total_player_steps": 66022
+  },
+  "player_extent": {
+    "x_min": -1.105,
+    "x_max": 1.066,
+    "y_min": -0.469,
+    "y_max": 0.468
+  },
+  "ball_outside_in_open_play_steps": 0,
+  "ball_max_height_z": 6.977,
+  "goals": [
+    {
+      "step": 683,
+      "scorer": "away",
+      "score": [
+        0,
+        1
+      ],
+      "ball_x_before_goal": -1.001,
+      "restart_from_centre": true
+    }
+  ],
+  "goal_end_ok": [
+    true
+  ],
+  "final_score": [
+    0,
+    1
+  ],
+  "both_teams_scored": false,
+  "mean_outfield_x": {
+    "home": -0.338,
+    "away": -0.148
+  },
+  "home_centroid_behind_away_pct": 81.9,
+  "avg_team_depth_x_spread": {
+    "home": 0.529,
+    "away": 0.525
+  },
+  "avg_team_width_y_spread": {
+    "home": 0.267,
+    "away": 0.243
+  },
+  "distance_covered_per_player": {
+    "home": [
+      17.4,
+      34.2,
+      35.9,
+      34.1,
+      35.1,
+      36.7,
+      32.9,
+      36.7,
+      37.0,
+      39.7,
+      36.7
+    ],
+    "away": [
+      14.0,
+      40.8,
+      43.4,
+      38.2,
+      33.8,
+      38.0,
+      32.6,
+      34.5,
+      41.2,
+      33.6,
+      34.4
+    ]
+  },
+  "position_jumps": {
+    "total": 34,
+    "after_goal_reset": 1,
+    "half_time": 1,
+    "dead_ball_restart": 32,
+    "unexplained_steps": []
+  },
+  "max_player_step_speed_excluding_resets": 0.0149,
+  "possession_pct_of_owned_steps": {
+    "home": 41,
+    "away": 59
+  },
+  "ball_free_steps": 1278,
+  "turnovers_home_away": 68,
+  "game_mode_steps": {
+    "normal": 2791,
+    "free_kick": 48,
+    "corner": 39,
+    "throw_in": 123
+  },
+  "ball_owner_changes_between_teams": 68,
+  "all_checks_pass": true
+}
+```

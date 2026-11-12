@@ -11,10 +11,8 @@ import {
 import { api, LIVE_POLL_INTERVAL_MS } from '../api/client'
 import type { ApiCountdown } from '../api/types'
 import {
-  buildFingerprint,
   loadPlatformCache,
   patchPlatformCache,
-  savePlatformCache,
 } from '../api/platformCache'
 import type { ApiLiveCard } from '../api/types'
 import {
@@ -44,7 +42,7 @@ import type {
 
 type LeagueKey = Exclude<LeagueId, 'ALL'>
 
-const CAROUSEL_LIMIT = 6
+export const CAROUSEL_LIMIT = 6
 const FIXTURES_LIMIT = 40
 const RESULTS_LIMIT = 50
 
@@ -62,8 +60,19 @@ interface PlatformDataValue {
   results: ResultItem[]
   tables: Record<LeagueKey, TableRow[]>
   scorers: Record<LeagueKey, ScorerRow[]>
+  /** Per-league readiness for each lazily-loaded panel (table/fixtures/results/stats). */
+  loaded: Record<PanelKind, LeagueKey[]>
   refresh: () => void
 }
+
+export type PanelKind = 'table' | 'fixtures' | 'results' | 'stats'
+
+const emptyLoaded = (): Record<PanelKind, LeagueKey[]> => ({
+  table: [],
+  fixtures: [],
+  results: [],
+  stats: [],
+})
 
 const emptyTables = (): Record<LeagueKey, TableRow[]> => ({
   'Premier League': [],
@@ -274,79 +283,150 @@ export function PlatformDataProvider({ children }: { children: ReactNode }) {
   const [results, setResults] = useState<ResultItem[]>([])
   const [tables, setTables] = useState(emptyTables)
   const [scorers, setScorers] = useState(emptyScorers)
+  const [loaded, setLoaded] = useState(emptyLoaded)
   const fingerprintRef = useRef('')
   const leaguesRef = useRef<LeagueMeta[]>([])
 
+  const pollCountRef = useRef(0)
+
   const fetchAll = useCallback(async () => {
     try {
-      const [leagueRows, liveCards] = await Promise.all([api.leagues(), api.liveAll()])
+      // ── PHASE 1: Table & League Meta FIRST (<100ms) ───────────────
+      const leagueRows = await api.leagues()
       const mappedLeagues = leagueRows.map(mapLeague).filter((l): l is LeagueMeta => l !== null)
       if (mappedLeagues.length === 0) {
         throw new Error('No recognised leagues in API response')
       }
       leaguesRef.current = mappedLeagues
-
-      const clock = liveCards.reduce((max, c) => Math.max(max, c.virtual_clock_ms), 0)
-      const carouselUpcoming = await loadCarouselQueue(mappedLeagues, liveCards)
-
       setLeagues(mappedLeagues)
+
+      setError(null)
+
+      // ── PHASE 2: everything in parallel — each piece renders as soon as it lands ─
+      // Carousel: fast /carousel endpoint, independent of tables and /live/all.
+      const carouselPromise = api
+        .carousel()
+        .then((res) =>
+          res.mode === 'wall_clock'
+            ? res.items.map(mapCarouselItem).filter((m): m is UpcomingMatch => m !== null)
+            : null,
+        )
+        .catch(() => null)
+        .then((items) => {
+          if (items && items.length > 0) {
+            setUpcoming(items)
+            setCarouselReady(true)
+          }
+          return items
+        })
+
+      // Fixtures / results / stats: separate per-league calls, started now,
+      // each committing its own slice + readiness flag the moment it resolves.
+      const fixturesAcc: FixtureItem[] = []
+      const resultsAcc: ResultItem[] = []
+      const markLoaded = (kind: PanelKind, key: LeagueKey) =>
+        setLoaded((prev) =>
+          prev[kind].includes(key) ? prev : { ...prev, [kind]: [...prev[kind], key] },
+        )
+      const startDetails = () => Promise.allSettled(
+        mappedLeagues.flatMap((league) => {
+          const key = league.id as LeagueKey
+          return [
+            Promise.all([
+              api.fixtures({
+                seasonId: league.seasonId,
+                status: 'upcoming',
+                minGameweek: league.gameweek,
+                limit: FIXTURES_LIMIT,
+              }),
+              api.fixtures({ seasonId: league.seasonId, status: 'preparing', limit: 12 }),
+              api.fixtures({ seasonId: league.seasonId, status: 'live', limit: 8 }),
+            ])
+              .then(([up, prep, live]) => {
+                const seen = new Set<string>()
+                const rows: FixtureItem[] = []
+                for (const f of [...live.fixtures, ...prep.fixtures, ...up.fixtures]) {
+                  if (seen.has(f.match_id)) continue
+                  seen.add(f.match_id)
+                  rows.push(mapFixture(f, key))
+                }
+                fixturesAcc.push(...rows)
+                setFixtures((prev) => [...prev.filter((f) => f.league !== key), ...rows])
+              })
+              .finally(() => markLoaded('fixtures', key)),
+            api
+              .results({ seasonId: league.seasonId, limit: RESULTS_LIMIT })
+              .then((res) => {
+                const rows = res.results.map((r) => mapResult(r, key))
+                resultsAcc.push(...rows)
+                setResults((prev) => [...prev.filter((r) => r.league !== key), ...rows])
+              })
+              .finally(() => markLoaded('results', key)),
+            api
+              .topScorers(league.seasonId)
+              .then((top) =>
+                setScorers((prev) => ({ ...prev, [key]: top.scorers.map(mapScorer) })),
+              )
+              .finally(() => markLoaded('stats', key)),
+          ]
+        }),
+      )
+
+      // Tables: each league renders independently.
+      const tablesPromise = Promise.allSettled(
+        mappedLeagues.map(async (league) => {
+          const key = league.id as LeagueKey
+          try {
+            const tbl = await api.table(league.seasonId)
+            setTables((prev) => ({ ...prev, [key]: tbl.table.map(mapTableRow) }))
+          } finally {
+            markLoaded('table', key)
+          }
+        }),
+      )
+
+      // Tables first: wait for them before firing the heavier requests so they
+      // don't compete for the browser's ~6 connections / backend workers.
+      await tablesPromise
+      const detailsPromise = startDetails()
+
+      const liveCards = await api.liveAll()
+      const clock = liveCards.reduce((max, c) => Math.max(max, c.virtual_clock_ms), 0)
+      const liveFromCards = liveCards.map(mapLiveCard).filter((m): m is LiveMatch => m !== null)
+
       setVirtualClockMs(clock)
       setCountdownByLeague(parseCountdowns(liveCards))
       setClocksByLeague(parseClocksFromLiveCards(liveCards))
-      setUpcoming(carouselUpcoming)
-      setCarouselReady(true)
-      setError(null)
+      setLiveMatches(liveFromCards)
 
-      const details = await loadDetailsForLeagues(mappedLeagues)
-      const globalLive = await loadGlobalLiveBroadcasts(mappedLeagues)
-      const live = sortLiveBroadcasts(
-        mergeLiveFromFixtures(
-          [...globalLive, ...liveCards.map(mapLiveCard).filter((m): m is LiveMatch => m !== null)],
-          details.fixturesAcc,
-        ),
-      )
-
-      setLiveMatches(live)
-      setUpcoming(carouselUpcoming)
-      setFixtures(details.fixturesAcc)
-      setResults(details.resultsAcc)
-      setTables(details.tablesAcc)
-      setScorers(details.scorersAcc)
-      setDetailsReady(true)
-
-      patchPlatformCache({
-        leagues: mappedLeagues,
-        virtualClockMs: clock,
-        liveMatches: live,
-        upcoming: carouselUpcoming,
-        fixtures: details.fixturesAcc,
-        results: details.resultsAcc,
-        tables: details.tablesAcc,
-        scorers: details.scorersAcc,
-      })
-
-      const fingerprint = buildFingerprint({
-        leagues: mappedLeagues,
-        upcoming: carouselUpcoming,
-        liveMatches: live,
-        results: details.resultsAcc,
-        tables: details.tablesAcc,
-        scorers: details.scorersAcc,
-      })
-      if (fingerprint !== fingerprintRef.current) {
-        fingerprintRef.current = fingerprint
-        savePlatformCache({
-          fingerprint,
-          leagues: mappedLeagues,
-          virtualClockMs: clock,
-          liveMatches: live,
-          upcoming: carouselUpcoming,
-          fixtures: details.fixturesAcc,
-          results: details.resultsAcc,
-          tables: details.tablesAcc,
-          scorers: details.scorersAcc,
-        })
+      // Legacy fallback only if /carousel gave nothing usable.
+      let carouselUpcoming = await carouselPromise
+      if (!carouselUpcoming || carouselUpcoming.length === 0) {
+        carouselUpcoming = await loadCarouselQueue(mappedLeagues, liveCards)
+        setUpcoming(carouselUpcoming)
       }
+      setCarouselReady(true)
+      await detailsPromise
+
+      // Merge live broadcasts once fixtures are in; then cache.
+      void (async () => {
+        try {
+          const globalLive = await loadGlobalLiveBroadcasts(mappedLeagues)
+          setLiveMatches(
+            sortLiveBroadcasts(mergeLiveFromFixtures([...globalLive, ...liveFromCards], fixturesAcc)),
+          )
+          setDetailsReady(true)
+          patchPlatformCache({
+            leagues: mappedLeagues,
+            virtualClockMs: clock,
+            upcoming: carouselUpcoming ?? [],
+            fixtures: fixturesAcc,
+            results: resultsAcc,
+          })
+        } catch {
+          setDetailsReady(true)
+        }
+      })()
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to load platform data')
     }
@@ -354,68 +434,38 @@ export function PlatformDataProvider({ children }: { children: ReactNode }) {
 
   const refreshLiveAndPanels = useCallback(async () => {
     try {
-      const [leagueRows, liveCards] = await Promise.all([api.leagues(), api.liveAll()])
-      const mappedLeagues = leagueRows.map(mapLeague).filter((l): l is LeagueMeta => l !== null)
-      const activeLeagues =
-        mappedLeagues.length > 0 ? mappedLeagues : leaguesRef.current
-      if (mappedLeagues.length > 0) {
-        leaguesRef.current = mappedLeagues
-        setLeagues(mappedLeagues)
-      }
+      // Lightweight 5s poll: only fetch live cards and carousel to update clock/score/countdowns
+      const liveCards = await api.liveAll()
+      const mappedLeagues = leaguesRef.current
 
       const clock = liveCards.reduce((max, c) => Math.max(max, c.virtual_clock_ms), 0)
       const liveFromCards = liveCards.map(mapLiveCard).filter((m): m is LiveMatch => m !== null)
 
-      if (activeLeagues.length === 0) {
-        setVirtualClockMs(clock)
-        setCountdownByLeague(parseCountdowns(liveCards))
-        setClocksByLeague(parseClocksFromLiveCards(liveCards))
-        setLiveMatches(liveFromCards)
-        return
-      }
-
-      const [refreshed, details, globalLive] = await Promise.all([
-        loadCarouselQueue(activeLeagues, liveCards),
-        loadDetailsForLeagues(activeLeagues),
-        loadGlobalLiveBroadcasts(activeLeagues),
-      ])
-
-      const live = sortLiveBroadcasts(
-        mergeLiveFromFixtures([...globalLive, ...liveFromCards], details.fixturesAcc),
-      )
       setVirtualClockMs(clock)
       setCountdownByLeague(parseCountdowns(liveCards))
       setClocksByLeague(parseClocksFromLiveCards(liveCards))
-      setLiveMatches(live)
+      setLiveMatches((prev) => (prev.length === 0 ? liveFromCards : prev))
 
-      setUpcoming(refreshed)
-      setCarouselReady(true)
-      setFixtures(details.fixturesAcc)
-      setResults(details.resultsAcc)
-      setTables(details.tablesAcc)
-      setScorers(details.scorersAcc)
-      setDetailsReady(true)
+      pollCountRef.current += 1
 
-      const fingerprint = buildFingerprint({
-        leagues: activeLeagues,
-        upcoming: refreshed,
-        liveMatches: live,
-        results: details.resultsAcc,
-        tables: details.tablesAcc,
-        scorers: details.scorersAcc,
-      })
-      fingerprintRef.current = fingerprint
-      savePlatformCache({
-        fingerprint,
-        leagues: activeLeagues,
-        virtualClockMs: clock,
-        liveMatches: live,
-        upcoming: refreshed,
-        fixtures: details.fixturesAcc,
-        results: details.resultsAcc,
-        tables: details.tablesAcc,
-        scorers: details.scorersAcc,
-      })
+      // Heavy 24-endpoint details refresh runs only every 30s (every 6th cycle)
+      if (pollCountRef.current % 6 === 0 && mappedLeagues.length > 0) {
+        const [refreshed, details, globalLive] = await Promise.all([
+          loadCarouselQueue(mappedLeagues, liveCards),
+          loadDetailsForLeagues(mappedLeagues),
+          loadGlobalLiveBroadcasts(mappedLeagues),
+        ])
+
+        const live = sortLiveBroadcasts(
+          mergeLiveFromFixtures([...globalLive, ...liveFromCards], details.fixturesAcc),
+        )
+        setLiveMatches(live)
+        setUpcoming(refreshed)
+        setFixtures(details.fixturesAcc)
+        setResults(details.resultsAcc)
+        setTables(details.tablesAcc)
+        setScorers(details.scorersAcc)
+      }
     } catch {
       // Keep cached state on poll failure
     }
@@ -459,6 +509,7 @@ export function PlatformDataProvider({ children }: { children: ReactNode }) {
       results,
       tables,
       scorers,
+      loaded,
       refresh: fetchAll,
     }),
     [
@@ -475,6 +526,7 @@ export function PlatformDataProvider({ children }: { children: ReactNode }) {
       results,
       tables,
       scorers,
+      loaded,
       fetchAll,
     ],
   )

@@ -12,13 +12,13 @@ log = logging.getLogger(__name__)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 VIDEO_DIR = PROJECT_ROOT / "videos"
 
-MIN_KB = 100
+MIN_KB = 10
 MAX_KB = 12000
 ACCEPT_MAX_KB = 15000
 MIN_BYTES = MIN_KB * 1024
 MAX_BYTES = MAX_KB * 1024
 ACCEPT_MAX_BYTES = ACCEPT_MAX_KB * 1024
-TARGET_BYTES = (MIN_BYTES + MAX_BYTES) // 2
+TARGET_BYTES = MAX_BYTES // 2  # aim for ~6000 KB when size is unconstrained
 
 
 def _file_bytes(path: Path) -> int:
@@ -109,7 +109,7 @@ def _encode_h264(inp: Path, out: Path, scale: str, bitrate_k: int) -> bool:
             log.debug("Encoder %s failed for %s: %s", encoder, inp.name, err[-200:])
             out.unlink(missing_ok=True)
             continue
-        if not out.is_file() or _file_bytes(out) < 50_000:
+        if not out.is_file() or _file_bytes(out) < 5_000:
             out.unlink(missing_ok=True)
             continue
         from utils.video_faststart import probe_mp4

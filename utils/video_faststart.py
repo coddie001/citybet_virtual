@@ -103,7 +103,7 @@ def is_finalizable(path: Path, *, check_writing: bool = True) -> bool:
     if not path.is_file():
         return False
     try:
-        if path.stat().st_size < 50_000:
+        if path.stat().st_size < 5_000:
             return False
     except OSError:
         return False
@@ -150,7 +150,7 @@ def sanitize_corrupt_videos(video_dir: Path | None = None) -> int:
         return 0
     removed = 0
     for path in root.glob("*_full.mp4"):
-        if not path.is_file() or path.stat().st_size < 50_000:
+        if not path.is_file() or path.stat().st_size < 5_000:
             continue
         if probe_mp4(path) is None and not is_recently_modified(path, within_sec=90.0):
             if quarantine_incomplete(path):

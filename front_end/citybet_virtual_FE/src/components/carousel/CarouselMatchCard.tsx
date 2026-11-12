@@ -8,6 +8,7 @@ import type { LeagueId, UpcomingMatch } from '../../types'
 interface CarouselMatchCardProps {
   match: UpcomingMatch
   onWatchLive?: (league: LeagueId, matchId?: string) => void
+  eager?: boolean
 }
 
 function buildScheduledCountdown(match: UpcomingMatch): ApiCountdown | null {
@@ -32,7 +33,7 @@ function buildScheduledCountdown(match: UpcomingMatch): ApiCountdown | null {
 }
 
 /** Countdown from backend `/carousel`; preparing rows always show MM:SS timer overlay. */
-export function CarouselMatchCard({ match, onWatchLive }: CarouselMatchCardProps) {
+export function CarouselMatchCard({ match, onWatchLive, eager }: CarouselMatchCardProps) {
   const onAir = isBroadcastOnAir(match)
   const isPreparing = match.status === 'preparing'
 
@@ -53,6 +54,7 @@ export function CarouselMatchCard({ match, onWatchLive }: CarouselMatchCardProps
   return (
     <MatchCard
       match={match}
+      eager={eager}
       showCountdown={showCountdown}
       showLive={onAir}
       showUpNext={match.isNext === true && isPreparing}

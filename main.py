@@ -362,26 +362,47 @@ def top_scorers(
     }
 
 
-def _get_oldest_completed_fixtures_with_video(db: Session, season_id: uuid.UUID, limit: int = 5):
-    from utils.virtual_schedule import match_has_video
-    fixtures = (
-        db.query(Fixture)
-        .join(GfrDump, Fixture.match_id == GfrDump.match_id)
-        .filter(
-            Fixture.season_id == season_id,
-            Fixture.status == "completed"
+RECENT_REPLAY_LIMIT = 8
+
+
+def _get_recent_completed_fixtures_with_video(
+    db: Session, season_id: uuid.UUID, limit: int = RECENT_REPLAY_LIMIT
+):
+    """Most recent *limit* completed fixtures whose video is properly saved.
+
+    Newest first. "Properly saved" = a browser-streamable MP4 exists on disk
+    (full or _full_small, moov-at-start, > 50 KB). Only the video_url column is
+    read from GfrDump (never the match_video blob), candidates are paged
+    newest-first, and each check is a stat + small header read, so this stays
+    cheap inside the /live/all poll even though it touches the filesystem.
+    """
+    from utils.video_paths import resolve_streamable_video
+
+    found: list = []
+    seen: set = set()
+    page = 40
+    for offset in range(0, 1000, page):
+        rows = (
+            db.query(Fixture, GfrDump.video_url)
+            .join(GfrDump, Fixture.match_id == GfrDump.match_id)
+            .filter(Fixture.season_id == season_id, Fixture.status == "completed")
+            .order_by(Fixture.show_at_ms.desc(), Fixture.match_id)
+            .offset(offset)
+            .limit(page)
+            .all()
         )
-        .order_by(Fixture.show_at_ms.asc())
-        .all()
-    )
-    res = []
-    for f in fixtures:
-        dump = db.query(GfrDump).filter(GfrDump.match_id == f.match_id).first()
-        if match_has_video(dump, f.match_id):
-            res.append(f)
-            if len(res) >= limit:
-                break
-    return res
+        if not rows:
+            break
+        for fixture, video_url in rows:
+            if fixture.match_id in seen:
+                continue
+            seen.add(fixture.match_id)
+            if resolve_streamable_video(fixture.match_id, video_url) is None:
+                continue
+            found.append(fixture)
+            if len(found) >= limit:
+                return found
+    return found
 
 
 @app.get("/live/now", tags=["Live"])
@@ -396,7 +417,7 @@ def live_now(
 
     fixture, clock, source = resolve_live_fixture(db, season.season_id, virtual_ms)
     if not fixture:
-        fallbacks = _get_oldest_completed_fixtures_with_video(db, season.season_id, limit=1)
+        fallbacks = _get_recent_completed_fixtures_with_video(db, season.season_id, limit=1)
         if fallbacks:
             fixture = fallbacks[0]
             source = "virtual_replay"
@@ -424,44 +445,94 @@ def live_all_leagues(
     Carousel/landing-page polling endpoint — called every 5 s by the frontend.
     match_sync is intentionally omitted (it runs ffprobe which is expensive);
     fetch /live/now or /fixtures/{id} for the full sync payload when playing a video.
+
+    Performance notes:
+    - Teams and GfrDumps are bulk-loaded once per request (eliminates N+1 queries).
+    - has_video uses DB-only check (no MP4 filesystem probes).
+    - match_sync skipped (no ffprobe).
     """
     seasons = db.query(Season).filter(Season.season_status == "active").all()
-    cards = []
+
+    # ── Gather all fixture candidates first so we can bulk-load related objects ─
+    season_fixtures: list[tuple] = []  # (season, fixture_or_None, clock, source, fallbacks)
     for season in seasons:
-        fixture, clock, source = resolve_live_fixture(db, season.season_id, virtual_ms)
+        fixture, clock, source = resolve_live_fixture(db, season.season_id, virtual_ms, skip_video_probe=True)
+        if fixture:
+            season_fixtures.append((season, fixture, clock, source, []))
+        else:
+            fallbacks = _get_recent_completed_fixtures_with_video(db, season.season_id)
+            season_fixtures.append((season, None, clock, source, fallbacks))
+
+    # ── Collect all match_ids we need to render ─────────────────────────────────
+    all_fixtures: list = []
+    for _, fixture, _, _, fallbacks in season_fixtures:
+        if fixture:
+            all_fixtures.append(fixture)
+        else:
+            all_fixtures.extend(fallbacks)
+
+    all_match_ids = [f.match_id for f in all_fixtures]
+    all_team_ids  = list({f.home_team_id for f in all_fixtures} | {f.away_team_id for f in all_fixtures})
+
+    # ── Two bulk queries instead of 4×N individual ones ────────────────────────
+    teams_by_id: dict = {}
+    dumps_by_match: dict = {}
+    if all_team_ids:
+        for team in db.query(Team).filter(Team.team_id.in_(all_team_ids)).all():
+            teams_by_id[team.team_id] = team
+    if all_match_ids:
+        for dump in db.query(GfrDump).filter(GfrDump.match_id.in_(all_match_ids)).all():
+            dumps_by_match[dump.match_id] = dump
+
+    # ── Pre-compute per-season countdown (reused across all cards of a season) ──
+    countdown_by_season: dict = {}
+    for season, _, clock, _, _ in season_fixtures:
+        sid = season.season_id
+        if sid not in countdown_by_season:
+            countdown_by_season[sid] = build_countdown_state(db, sid, clock)
+
+    def _card(fixture, clock):
+        return serialize_fixture_card(
+            db, fixture, clock,
+            skip_match_sync=True,
+            skip_video_probe=True,
+            preloaded_teams=teams_by_id,
+            preloaded_dumps=dumps_by_match,
+        )
+
+    # ── Assemble response cards ─────────────────────────────────────────────────
+    cards = []
+    for season, fixture, clock, source, fallbacks in season_fixtures:
         league_name = " ".join(season.tournament_name.split()[:-1])
-        countdown = build_countdown_state(db, season.season_id, clock)
+        countdown = countdown_by_season[season.season_id]
         if fixture:
             cards.append({
                 "league_name": league_name,
                 "season_id": str(season.season_id),
                 "virtual_clock_ms": clock,
                 "source": source,
-                # skip_match_sync: avoid ffprobe on every poll cycle
-                "fixture": serialize_fixture_card(db, fixture, clock, skip_match_sync=True),
+                "fixture": _card(fixture, clock),
                 "countdown": countdown,
             })
-        else:
-            fallbacks = _get_oldest_completed_fixtures_with_video(db, season.season_id, limit=5)
-            if fallbacks:
-                for f in fallbacks:
-                    cards.append({
-                        "league_name": league_name,
-                        "season_id": str(season.season_id),
-                        "virtual_clock_ms": clock,
-                        "source": "virtual_replay",
-                        "fixture": serialize_fixture_card(db, f, clock, skip_match_sync=True),
-                        "countdown": countdown,
-                    })
-            else:
+        elif fallbacks:
+            for f in fallbacks:
                 cards.append({
                     "league_name": league_name,
                     "season_id": str(season.season_id),
                     "virtual_clock_ms": clock,
-                    "source": "none",
-                    "fixture": None,
+                    "source": "virtual_replay",
+                    "fixture": _card(f, clock),
                     "countdown": countdown,
                 })
+        else:
+            cards.append({
+                "league_name": league_name,
+                "season_id": str(season.season_id),
+                "virtual_clock_ms": clock,
+                "source": "none",
+                "fixture": None,
+                "countdown": countdown,
+            })
     return cards
 
 

@@ -22,17 +22,24 @@ function kickoffSortKey(m: LiveMatch): number {
 
 export function HomePage() {
   const { selectedLeague } = useLeague()
-  const { carouselReady, error, liveMatches: platformLive } = usePlatformData()
+  const { error, liveMatches: platformLive } = usePlatformData()
   useFilteredData(selectedLeague)
   const [liveOpen, setLiveOpen] = useState(false)
   const [focusMatchId, setFocusMatchId] = useState<string | undefined>()
   const liveDismissedRef = useRef(false)
 
-  /** Stay on-air until backend marks completed (10-min window) — not when video ends. */
+  /** Stay on-air until backend marks completed (10-min window) — not when video ends.
+   *  Genuinely live games first (kick-off order), then replays newest-first, so the
+   *  panel shows the last 8 completed games that have a saved video. */
   const liveMatches = useMemo(() => {
-    return [...platformLive.filter(isBroadcastOnAir)]
+    const onAir = platformLive.filter(isBroadcastOnAir)
+    const live = onAir
+      .filter((m) => !m.isFallback)
       .sort((a, b) => kickoffSortKey(a) - kickoffSortKey(b))
-      .slice(0, MAX_LIVE_DRAWER_MATCHES)
+    const replays = onAir
+      .filter((m) => m.isFallback)
+      .sort((a, b) => kickoffSortKey(b) - kickoffSortKey(a))
+    return [...live, ...replays].slice(0, MAX_LIVE_DRAWER_MATCHES)
   }, [platformLive])
 
   useEffect(() => {
@@ -85,20 +92,14 @@ export function HomePage() {
                 </p>
               </MainSection>
             )}
-            {!carouselReady ? (
-              <MainSection>
-                <p className="text-center text-fluid-sm text-white/50">Loading platform data…</p>
-              </MainSection>
-            ) : (
-              <>
-                <MainSection>
-                  <UpcomingGamesCarousel onWatchLive={handleWatchLive} />
-                </MainSection>
-                <MainSection className="!p-0">
-                  <DataPanel embedded onWatchLive={handleWatchLive} />
-                </MainSection>
-              </>
-            )}
+            {/* Carousel: always rendered — shows skeletons until data arrives */}
+            <MainSection>
+              <UpcomingGamesCarousel onWatchLive={handleWatchLive} />
+            </MainSection>
+            {/* DataPanel: always rendered — shows skeleton table until details load */}
+            <MainSection className="!p-0">
+              <DataPanel embedded onWatchLive={handleWatchLive} />
+            </MainSection>
             <MainSection className="!py-0 !pb-6 sm:!pb-8">
               <PromoBanner />
             </MainSection>

@@ -5,6 +5,14 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
+# Load .env if present (exports all vars to child processes)
+if [[ -f "${SCRIPT_DIR}/.env" ]]; then
+    set -o allexport
+    # shellcheck source=/dev/null
+    source "${SCRIPT_DIR}/.env"
+    set +o allexport
+fi
+
 PYTHON="${SCRIPT_DIR}/venv/bin/python3"
 PIDFILE_API="${SCRIPT_DIR}/.api.pid"
 PIDFILE_WORKER="${SCRIPT_DIR}/.worker.pid"

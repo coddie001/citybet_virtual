@@ -227,6 +227,26 @@ class PlayerActionInfluencer:
         return actions_copy
 
 
+ARCHIVED_SIM_PYC = PROJECT_ROOT / ".bytecode_archive" / "workers" / "game_simulator.cpython-313.pyc"
+
+
+def _load_archived_influencer():
+    """Load the original (goal-scoring) tactical PlayerActionInfluencer from the bytecode archive."""
+    try:
+        import importlib.machinery
+        import importlib.util
+        if not ARCHIVED_SIM_PYC.is_file():
+            return None
+        loader = importlib.machinery.SourcelessFileLoader("workers._archived_game_simulator", str(ARCHIVED_SIM_PYC))
+        spec = importlib.util.spec_from_loader(loader.name, loader)
+        mod = importlib.util.module_from_spec(spec)
+        loader.exec_module(mod)
+        return mod.PlayerActionInfluencer
+    except Exception as exc:
+        log.warning("Could not load archived influencer (%s); using simplified influencer.", exc)
+        return None
+
+
 class FeatureExtractor:
     def __init__(self, num_agents: int = 10):
         self.num_agents = num_agents
@@ -461,6 +481,11 @@ def _run_simulation_child(
 ):
     """Isolated subprocess to run GFootball match safely with TiKick actor model."""
     try:
+        try:
+            import setproctitle
+            setproctitle.setproctitle("game_simulator:match-child")
+        except Exception:
+            pass
         import gym
         import gym.core
 
@@ -507,7 +532,13 @@ def _run_simulation_child(
             other_config_options={"action_set": "full", "render_hud": False, "display_game_stats": False, "logdir": dump_dir_str},
         )
 
-        influencer = PlayerActionInfluencer(home_attrs, away_attrs)
+        # Original tactical influencer (GK/defender/attacker positioning) + per-match RNG seed.
+        InfluencerCls = _load_archived_influencer() or PlayerActionInfluencer
+        try:
+            seed = int(match_id_str.replace("-", "")[:8], 16)
+            influencer = InfluencerCls(home_attrs, away_attrs, rng_seed=seed)
+        except TypeError:
+            influencer = InfluencerCls(home_attrs, away_attrs)
         favoured = home_name if influencer.home_strength >= influencer.away_strength else away_name
         print(
             f"[child] Squad strength (from DB)  HOME {home_name}: rating={influencer.home_strength:.2f} vel={influencer.home_vel:.2f}  |  AWAY {away_name}: rating={influencer.away_strength:.2f} vel={influencer.away_vel:.2f}  → favoured: {favoured}",
@@ -609,9 +640,15 @@ def _run_simulation_child(
                 raw_actions = np.random.randint(0, 19, size=20)
 
             # Apply DB Player Action Influences
-            home_acts = influencer.batch_influence(raw_actions[:10], raw_home[0], attrs_team_idx=0)
-            away_acts = influencer.batch_influence(raw_actions[10:], raw_away[0], attrs_team_idx=1)
-            final_actions = np.array(home_acts + away_acts, dtype=np.int32)
+            # The influencer is keyed by the *active* player slot of each agent and receives that
+            # agent's own observation (as in the original working simulator).
+            final_actions = np.zeros(20, dtype=np.int32)
+            for team_idx, raws, base in ((0, raw_home, 0), (1, raw_away, 10)):
+                for i, obs_i in enumerate(raws):
+                    act = int(np.asarray(raw_actions[base + i]).item())
+                    act = min(max(act, 0), 18)
+                    active_idx = int(obs_i.get("active", i))
+                    final_actions[base + i] = influencer.influence(team_idx, active_idx, act, obs_i)
 
             step_res = env.step(final_actions)
             if len(step_res) == 4:
@@ -729,23 +766,21 @@ def run_simulation(fixture: Fixture, home_team: Team, away_team: Team, home_attr
 
 
 def render_dump_to_video(dump_path: str, match_config_path: str, output_dir: Path, match_id: str) -> dict:
-    from utils.draw_match import GameReplayVisualizer, mp4_to_gif
+    from utils.draw_match import GameReplayVisualizer
     from utils.video_faststart import finalize_mp4
 
     output_dir.mkdir(parents=True, exist_ok=True)
     mp4_out = output_dir / f"{match_id}_full.mp4"
-    gif_out = output_dir / f"{match_id}_full.gif"
 
     try:
         viz = GameReplayVisualizer(config_path=match_config_path, headless=True)
         viz.render_dump(dump_path, str(mp4_out), limit=None, fps=10)
         viz.quit()
         finalize_mp4(mp4_out, target_mb=4.5)
-        mp4_to_gif(str(mp4_out), str(gif_out), fps=10, scale=0.75)
-        return {"mp4": str(mp4_out), "gif": str(gif_out)}
+        return {"mp4": str(mp4_out)}
     except Exception as e:
         log.error("Failed rendering video for %s: %s", match_id, e)
-        return {"mp4": str(mp4_out) if mp4_out.is_file() else None, "gif": None}
+        return {"mp4": str(mp4_out) if mp4_out.is_file() else None}
 
 
 def settle_fixture(db, fixture: Fixture, stats: dict):
@@ -808,7 +843,6 @@ def settle_fixture(db, fixture: Fixture, stats: dict):
 def persist_dump(db, fixture: Fixture, stats: dict, video_paths: dict):
     dump_file = stats.get("dump_file")
     mp4_path = video_paths.get("mp4")
-    gif_path = video_paths.get("gif")
 
     video_binary = None
     if mp4_path and os.path.exists(mp4_path):
@@ -818,7 +852,7 @@ def persist_dump(db, fixture: Fixture, stats: dict, video_paths: dict):
         except Exception:
             pass
 
-    video_url = mp4_path if (mp4_path and os.path.exists(mp4_path)) else gif_path
+    video_url = mp4_path if (mp4_path and os.path.exists(mp4_path)) else None
 
     score_str = stats.get("score", "0-0")
     gfr_stats = {
@@ -916,7 +950,7 @@ def _simulate_target_fixture(db, fixture) -> bool:
 
     try:
         stats = run_simulation(fixture, home, away, home_attrs, away_attrs, match_config, dump_dir)
-        video_paths = {"mp4": None, "gif": None}
+        video_paths = {"mp4": None}
         dump_file = stats.get("dump_file")
         if dump_file and os.path.exists(dump_file):
             video_paths = render_dump_to_video(
@@ -946,7 +980,27 @@ def simulate_next_fixture(db):
     return _simulate_target_fixture(db, target)
 
 
+_LOCK_FH = None
+
+
+def _acquire_single_instance_lock() -> bool:
+    """Only one queue worker may run; a second copy would simulate the same fixtures twice."""
+    global _LOCK_FH
+    import fcntl
+    _LOCK_FH = open(PROJECT_ROOT / ".game_simulator.lock", "w")
+    try:
+        fcntl.flock(_LOCK_FH, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        return False
+    _LOCK_FH.write(str(os.getpid()))
+    _LOCK_FH.flush()
+    return True
+
+
 def run_queue_continuously(max_matches=None):
+    if not _acquire_single_instance_lock():
+        log.error("[Queue] Another game_simulator worker is already running — exiting.")
+        return
     log.info("[Queue] Starting self-healing simulation queue (actor vs actor mode)...")
     done = 0
     idle_sleep = 15

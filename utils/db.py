@@ -18,7 +18,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import BYTEA, JSONB, UUID
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import deferred, relationship, sessionmaker
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
@@ -136,7 +136,7 @@ class GfrDump(Base):
     video_url = Column(String(500), nullable=True)
     gfr_stats = Column(JSONB, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
-    match_video = Column(BYTEA, nullable=True)
+    match_video = deferred(Column(BYTEA, nullable=True))  # never bulk-load video blobs (coordinator RAM)
 
 
 def get_db():

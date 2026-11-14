@@ -228,3 +228,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 9f1e6b2a8771629b65d19fcd2ab35f5c9dddf9b9
+
+dumps/
+.game_simulator.lock
+.carousel_schedule_state.json
